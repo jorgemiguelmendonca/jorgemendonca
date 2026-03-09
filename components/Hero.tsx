@@ -4,22 +4,27 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function Hero() {
-  const [creditType, setCreditType] = useState("Habitação");
   const router = useRouter();
 
+  const [creditType, setCreditType] = useState("Habitação");
   const [amount, setAmount] = useState("");
   const [income, setIncome] = useState("");
 
   const sendToWhatsApp = () => {
-    const message = `
-Olá! Gostaria de solicitar uma simulação de crédito.
+    if (!amount || !income) {
+      alert("Por favor preencha o valor pretendido e o rendimento mensal.");
+      return;
+    }
+
+    const message = `Olá! Gostaria de solicitar uma simulação de crédito.
 
 Tipo de Crédito: ${creditType}
 Valor Pretendido: €${amount}
 Rendimento Mensal: €${income}
-`;
 
-    const url = `https://wa.me/555596588678?text=${encodeURIComponent(message)}`;
+Enviei este pedido através do site.`;
+
+    const url = `https://wa.me/351965710640?text=${encodeURIComponent(message)}`;
 
     window.open(url, "_blank");
   };
@@ -34,11 +39,12 @@ Rendimento Mensal: €${income}
 
       {/* DARK OVERLAY */}
       <div className="absolute inset-0 bg-black/50"></div>
-      <div className="relative max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+
+      <div className="relative max-w-7xl mx-auto px-3 grid md:grid-cols-2 gap-16 items-center">
         {/* LEFT SIDE */}
-        <div>
-          <span className="bg-[#1A2B4C]/150 text-[#c5a059] px-4 py-2 rounded-full text-sm font-medium">
-            Intermediário de Crédito Registado no Banco de Portugal
+        <div className="mt-10">
+          <span className="bg-[#1A2B4C]/80 text-[#c5a059]  px-3 py-2 rounded-full text-sm font-medium">
+            Intermediário de Crédito Registrado no Banco de Portugal
           </span>
 
           <h1 className="text-4xl md:text-5xl font-bold text-[#c5a059] mt-6 leading-tight">
@@ -71,7 +77,8 @@ Rendimento Mensal: €${income}
               className="border border-gray-300 px-8 py-4 rounded-lg font-medium hover:bg-gray-100 hover:text-[#c5a059] transition cursor-pointer"
               onClick={() =>
                 window.open(
-                  "https://wa.me/5555996588678?text=Olá,%20visitei%20o%20site%20e%20gostaria%20de%20falar%20com%20um%20especialista%20sobre%20soluções%20de%20crédito.",
+                  "https://wa.me/351965710640?text=Olá,%20visitei%20o%20site%20e%20gostaria%20de%20falar%20com%20um%20especialista%20sobre%20soluções%20de%20crédito.",
+                  "_blank",
                 )
               }
             >

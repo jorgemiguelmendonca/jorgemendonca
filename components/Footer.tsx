@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer className="bg-[#1A2B4C] text-white">
-      <div className="max-w-7xl mx-auto px-6 py-14 grid md:grid-cols-3 gap-10">
+      <div className="max-w-[1200px] m-auto px-6 py-14 grid md:grid-cols-3 gap-10">
         {/* EMPRESA */}
 
         <div>
@@ -103,7 +103,7 @@ export default function Footer() {
 
       {/* INFORMAÇÃO LEGAL */}
 
-      <div className="max-w-7xl mx-auto px-6 py-8 text-xs text-gray-300 leading-relaxed space-y-2">
+      <div className="max-w-[1200px] m-auto px-6 py-8 text-xs text-gray-300 leading-relaxed space-y-2">
         <p>
           <strong className="text-[#c5a059]">
             Jorge Miguel Mendonça, Unipessoal Lda.

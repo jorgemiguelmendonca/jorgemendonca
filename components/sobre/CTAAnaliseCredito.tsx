@@ -27,7 +27,7 @@ export default function CTAAnaliseCredito() {
           </Link>
 
           <Link
-            href="/contactos"
+            href="https://wa.me/351965710640"
             className="flex items-center justify-center border border-white/40 hover:bg-white hover:text-[#1A2B4C] px-8 py-4 rounded-lg transition"
           >
             Falar com um especialista

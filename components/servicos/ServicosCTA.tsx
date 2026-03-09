@@ -34,7 +34,7 @@ Tipo de crédito: ${form.tipo}
 Valor pretendido: € ${form.valor}
 Rendimento mensal: € ${form.renda}`;
 
-    const url = `https://wa.me/555596588678?text=${encodeURIComponent(
+    const url = `https://wa.me/351965710640?text=${encodeURIComponent(
       mensagem,
     )}`;
 

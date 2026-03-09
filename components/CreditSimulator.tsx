@@ -22,7 +22,7 @@ Prazo: ${prazo} anos
 Prestação Estimada: €${prestacao.toFixed(2)} / mês
 `;
 
-    const url = `https://wa.me/555596588678?text=${encodeURIComponent(mensagem)}`;
+    const url = `https://wa.me/351965710640?text=${encodeURIComponent(mensagem)}`;
 
     window.open(url, "_blank");
   };

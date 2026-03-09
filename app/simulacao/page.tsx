@@ -30,7 +30,7 @@ export default function Simulacao() {
   const progress = (step / 5) * 100;
 
   const sendToWhatsApp = () => {
-    const phone = "555596588678"; // número do dono do site (com código do país)
+    const phone = "351965710640"; // número do dono do site (com código do país)
 
     const message = `
 *Nova Simulação de Crédito*
@@ -65,7 +65,7 @@ Telefone: ${form.phone}
   };
 
   return (
-    <section className="min-h-screen bg-gray-50 flex items-center justify-center px-6 py-16">
+    <section className=" bg-[linear-gradient(rgba(10,20,40,0.75),rgba(10,20,40,0.75)),url('/hero.png')] bg-cover bg-center  min-h-screen bg-gray-50 flex items-center justify-center px-6 py-16">
       <div className="w-full max-w-xl bg-white rounded-2xl shadow-xl p-8">
         {/* Progress */}
         <div className="mb-8">

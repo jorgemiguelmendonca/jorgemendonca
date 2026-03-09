@@ -29,14 +29,14 @@ export default function ServicosHero() {
 
           <div className="flex flex-wrap gap-4 mt-8">
             <a
-              href="#simulador"
+              href="/simulacao"
               className="bg-[#C5A059] hover:bg-[#b8914e] text-white px-7 py-3 rounded-lg font-medium transition"
             >
               Pedir Simulação
             </a>
 
             <a
-              href="/contactos"
+              href="https://wa.me/351965710640"
               className="border border-gray-300 hover:border-gray-400 text-gray-700 px-7 py-3 rounded-lg font-medium transition"
             >
               Falar com Consultor

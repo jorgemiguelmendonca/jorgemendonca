@@ -148,7 +148,7 @@ export default function Servicos() {
           </p>
 
           <a
-            href="#simulador"
+            href="/simulacao"
             className="bg-[#C5A059] hover:bg-[#b08f4d] px-8 py-4 rounded-lg font-semibold transition"
           >
             Pedir Simulação Gratuita

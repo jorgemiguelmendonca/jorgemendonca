@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Send } from "lucide-react";
 
 export default function FormularioContato() {
   const [form, setForm] = useState({
@@ -22,13 +23,30 @@ export default function FormularioContato() {
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
 
-    console.log(form);
+    const mensagem = `Olá, gostaria de obter mais informações.
 
-    alert("Mensagem enviada com sucesso!");
+Nome: ${form.nome}
+Email: ${form.email}
+Telefone: ${form.telefone}
+
+Mensagem:
+${form.mensagem}`;
+
+    const url = `https://wa.me/351965710640?text=${encodeURIComponent(mensagem)}`;
+
+    window.open(url, "_blank");
+
+    // limpar formulário
+    setForm({
+      nome: "",
+      email: "",
+      telefone: "",
+      mensagem: "",
+    });
   }
 
   return (
-    <section className="py-20 px-6 bg-gray-50 bg-[linear-gradient(rgba(10,20,40,0.75),rgba(10,20,40,0.75)),url('/contacto.png')] bg-cover bg-top  ">
+    <section className="py-20 px-6 bg-gray-50 bg-[linear-gradient(rgba(10,20,40,0.75),rgba(10,20,40,0.75)),url('/contacto.png')] bg-cover bg-top">
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-baseline">
         {/* TEXTO */}
         <div>
@@ -112,9 +130,10 @@ export default function FormularioContato() {
 
           <button
             type="submit"
-            className="w-full bg-[#C5A059] hover:bg-[#b8934f] text-white font-semibold py-3 rounded-lg transition"
+            className="w-full bg-[#C5A059] hover:bg-[#b8934f] text-white font-semibold py-3 rounded-lg transition flex items-center justify-center gap-2"
           >
-            Enviar Mensagem
+            <Send size={18} />
+            Enviar pelo WhatsApp
           </button>
         </form>
       </div>
