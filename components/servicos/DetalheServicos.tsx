@@ -8,7 +8,7 @@ export default function DetalheServicos() {
         {/* Crédito Habitação */}
 
         <div className="grid md:grid-cols-2 gap-14 items-center">
-          <div className="relative w-full h-[360px]">
+          <div className="relative w-full h-90">
             <Image
               src="/credito-habitacao.png"
               alt="Crédito Habitação"
@@ -23,20 +23,20 @@ export default function DetalheServicos() {
             </h2>
 
             <p className="text-gray-600 mt-4 leading-relaxed">
-              Ajudamos a encontrar as melhores condições de financiamento para a
-              compra da sua casa. Acompanhamos todo o processo desde a simulação
-              inicial até à aprovação do crédito.
+              Financiamento para aquisição da sua casa própria nos Açores.
+              Encontramos as melhores condições do mercado adaptadas ao seu
+              perfil.
             </p>
 
             <ul className="mt-6 space-y-3 text-gray-700">
-              <li>• Financiamento para compra de imóvel</li>
-              <li>• Transferência de crédito habitação</li>
-              <li>• Análise personalizada do seu perfil</li>
-              <li>• Apoio durante todo o processo</li>
+              <li>• Taxas competitivas</li>
+              <li>• Prazos até 40 anos</li>
+              <li>• Sem custos de intermediação</li>
+              <li>• Análise de múltiplas propostas</li>
             </ul>
 
             <Link
-              href="#simulador"
+              href="/simulacao"
               className="inline-block mt-6 bg-[#C5A059] hover:bg-[#b8934f] text-white px-6 py-3 rounded-lg font-medium transition"
             >
               Pedir Simulação
@@ -53,20 +53,19 @@ export default function DetalheServicos() {
             </h2>
 
             <p className="text-gray-600 mt-4 leading-relaxed">
-              Financiamento para construção de moradias ou projetos
-              imobiliários. Trabalhamos para encontrar a solução mais adequada
-              ao seu projeto e capacidade financeira.
+              Soluções de financiamento para construção ou remodelação do seu
+              imóvel. Acompanhamento em todas as fases do projeto.
             </p>
 
             <ul className="mt-6 space-y-3 text-gray-700">
-              <li>• Financiamento para construção de casa</li>
-              <li>• Apoio na estruturação do crédito</li>
-              <li>• Acompanhamento técnico do processo</li>
-              <li>• Liberação de capital por fases</li>
+              <li>• Financiamento faseado</li>
+              <li>• Análise técnica incluída</li>
+              <li>• Apoio documental completo</li>
+              <li>• Especialização em projetos açorianos</li>
             </ul>
 
             <Link
-              href="#simulador"
+              href="/simulacao"
               className="inline-block mt-6 bg-[#C5A059] hover:bg-[#b8934f] text-white px-6 py-3 rounded-lg font-medium transition"
             >
               Pedir Simulação
@@ -101,16 +100,15 @@ export default function DetalheServicos() {
             </h2>
 
             <p className="text-gray-600 mt-4 leading-relaxed">
-              Se possui vários créditos ativos, podemos ajudar a agrupá-los num
-              único financiamento com uma prestação mensal mais equilibrada e
-              adequada à sua realidade financeira.
+              Unifique todos os seus créditos numa única prestação mensal mais
+              baixa. Reduza encargos e melhore a sua saúde financeira.
             </p>
 
             <ul className="mt-6 space-y-3 text-gray-700">
-              <li>• Agrupamento de vários créditos</li>
-              <li>• Redução da prestação mensal</li>
-              <li>• Melhor gestão financeira</li>
-              <li>• Análise personalizada do seu perfil</li>
+              <li>• Prestação única reduzida</li>
+              <li>• Maior liquidez mensal</li>
+              <li>• Simplificação da gestão</li>
+              <li>• Melhoria do perfil de crédito</li>
             </ul>
 
             <Link
