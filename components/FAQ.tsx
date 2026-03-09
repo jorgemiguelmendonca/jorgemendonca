@@ -4,7 +4,7 @@ import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 
 export default function Faq() {
-  const [open, setOpen] = useState(null);
+  const [open, setOpen] = useState<number | null>(null);
 
   const faqs = [
     {
@@ -33,7 +33,7 @@ export default function Faq() {
     },
   ];
 
-  const toggle = (index) => {
+  const toggle = (index: number) => {
     setOpen(open === index ? null : index);
   };
 
