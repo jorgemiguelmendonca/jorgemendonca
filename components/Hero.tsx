@@ -30,7 +30,7 @@ Enviei este pedido através do site.`;
   };
 
   return (
-    <section className="heroMaster relative w-full bg-[#F8F9FA] py-20">
+    <section className="heroMaste relative w-full bg-[#F8F9FA] py-20">
       {/* BACKGROUND IMAGE */}
       <div
         className="absolute inset-0 bg-cover bg-center"
@@ -40,21 +40,20 @@ Enviei este pedido através do site.`;
       {/* DARK OVERLAY */}
       <div className="absolute inset-0 bg-black/50"></div>
 
-      <div className="relative max-w-7xl mx-auto px-3 grid md:grid-cols-2 gap-16 items-center">
+      <div className="relative max-w-7xl mx-auto px-3 grid md:grid-cols-2 gap-16 items-center mt-10">
         {/* LEFT SIDE */}
-        <div className="mt-10">
+        <div>
           <span className="bg-[#1A2B4C]/80 text-[#c5a059]  px-3 py-2 rounded-full text-sm font-medium">
             Intermediário de Crédito Registrado no Banco de Portugal
           </span>
 
-          <h1 className="text-4xl md:text-5xl font-bold text-[#c5a059] mt-6 leading-tight">
-            Encontre a Melhor Solução de Crédito para o Seu Projeto
+          <h1 className="text-4xl md:text-5xl font-bold text-[#c5a059] mt-6 leading-tigh text-shadow-2xs text-shadow-black">
+            Soluções de Crédito entre 30.000€ e 23.000.000€
           </h1>
 
           <p className="text-gray-100 mt-6 text-lg">
-            Ajudamos famílias e empresas a encontrar as melhores soluções de
-            crédito para habitação, construção ou consolidação de dívidas.
-            Serviço profissional, transparente e sem custos para si.
+            Intermediação profissional, segura e adaptada à realidade de Toda a
+            Portugal.
           </p>
 
           {/* BENEFITS */}
@@ -88,7 +87,7 @@ Enviei este pedido através do site.`;
         </div>
 
         {/* RIGHT SIDE - SIMULATOR */}
-        <div className="bg-white p-8 rounded-2xl shadow-xl">
+        <div className="bg-white p-8 rounded-2xl shadow-xl ">
           <h3 className="text-2xl font-semibold text-[#1A2B4C]">
             Simule o seu Crédito
           </h3>

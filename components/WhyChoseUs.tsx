@@ -6,6 +6,57 @@ export default function WhyChooseUs() {
   return (
     <section className="py-24 bg-gray-50 px-6">
       <div className="max-w-6xl mx-auto">
+        {/* REGULATORY CARD */}
+
+        <div className="border border-[#C5A059] rounded-2xl p-8 bg-white mb-20">
+          <div className="flex gap-4 align-baseline">
+            <div className="w-12 h-12 flex items-center justify-center bg-[#c5a059] text-[#1a2b4c] rounded-lg mb-4">
+              <Shield size={22} />
+            </div>
+
+            <div className="flex flex-col gap-0  justify-center ">
+              <h3 className="text-lg font-semibold text-[#1A2B4C]">
+                Intermediário de Crédito Vinculado
+              </h3>
+
+              <p className="text-gray-600 mb-6">
+                Registado no Banco de Portugal sob o n.º{" "}
+                <strong>0001707</strong>
+              </p>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6 text-sm text-gray-600">
+            <div className="flex gap-4">
+              <div className="w-12 h-12 flex items-center justify-center bg-[#c5a059] text-[#1a2b4c] rounded-lg mb-4">
+                <Award size={22} />
+              </div>
+              <div>
+                <p className="font-medium text-[#1A2B4C]">
+                  Mutuantes com Contrato de Vinculação
+                </p>
+                <p>Cofidis e Bicredit</p>
+              </div>
+            </div>
+
+            <div className="flex gap-4">
+              <div className="w-12 h-12 flex items-center justify-center bg-[#c5a059] text-[#1a2b4c] rounded-lg mb-4">
+                <CheckSquare size={22} />
+              </div>
+              <div className="">
+                <p className="font-medium text-[#1A2B4C]">
+                  Seguro de Responsabilidade Civil
+                </p>
+                <p>Hiscox S.A. (Apólice 2522203)</p>
+              </div>
+            </div>
+          </div>
+
+          <p className="text-xs text-gray-400 mt-6">
+            Isento de receção de valores de clientes conforme o Art.º 46.º do
+            RJIC.
+          </p>
+        </div>
         {/* TITLE */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-[#1A2B4C]">
@@ -67,58 +118,6 @@ export default function WhyChooseUs() {
               assinatura, com total transparência.
             </p>
           </div>
-        </div>
-
-        {/* REGULATORY CARD */}
-
-        <div className="border border-[#C5A059] rounded-2xl p-8 bg-white">
-          <div className="flex gap-4 align-baseline">
-            <div className="w-12 h-12 flex items-center justify-center bg-[#c5a059] text-[#1a2b4c] rounded-lg mb-4">
-              <Shield size={22} />
-            </div>
-
-            <div className="flex flex-col gap-0  justify-center ">
-              <h3 className="text-lg font-semibold text-[#1A2B4C]">
-                Intermediário de Crédito Vinculado
-              </h3>
-
-              <p className="text-gray-600 mb-6">
-                Registado no Banco de Portugal sob o n.º{" "}
-                <strong>0001707</strong>
-              </p>
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-6 text-sm text-gray-600">
-            <div className="flex gap-4">
-              <div className="w-12 h-12 flex items-center justify-center bg-[#c5a059] text-[#1a2b4c] rounded-lg mb-4">
-                <Award size={22} />
-              </div>
-              <div>
-                <p className="font-medium text-[#1A2B4C]">
-                  Mutuantes com Contrato de Vinculação
-                </p>
-                <p>Cofidis e Bicredit</p>
-              </div>
-            </div>
-
-            <div className="flex gap-4">
-              <div className="w-12 h-12 flex items-center justify-center bg-[#c5a059] text-[#1a2b4c] rounded-lg mb-4">
-                <CheckSquare size={22} />
-              </div>
-              <div className="">
-                <p className="font-medium text-[#1A2B4C]">
-                  Seguro de Responsabilidade Civil
-                </p>
-                <p>Hiscox S.A. (Apólice 2522203)</p>
-              </div>
-            </div>
-          </div>
-
-          <p className="text-xs text-gray-400 mt-6">
-            Isento de receção de valores de clientes conforme o Art.º 46.º do
-            RJIC.
-          </p>
         </div>
       </div>
     </section>
