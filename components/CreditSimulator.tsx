@@ -19,7 +19,7 @@ export default function Simulador() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        formType: "simulacao",
+        formType: "credit-simulator",
         data: {
           tipo,
           valor,
@@ -37,7 +37,6 @@ export default function Simulador() {
       alert("Erro ao enviar simulação.");
     }
   };
-
   return (
     <section className="py-24 bg-gray-50 px-6">
       <div className="max-w-6xl mx-auto">

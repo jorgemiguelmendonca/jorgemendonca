@@ -33,12 +33,15 @@ export default function Simulacao() {
     if (!canProceed()) return;
 
     try {
-      const res = await fetch("/api/simulacao-completa", {
+      const res = await fetch("/api/lead", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          formType: "simulacao",
+          data: form,
+        }),
       });
 
       const data = await res.json();

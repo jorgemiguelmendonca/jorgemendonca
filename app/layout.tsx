@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import Footer from "@/components/Footer";
+import CookieConsent from "@/components/CookieConsent";
 const geistSans = Geist({
   variable: "--font-montserrat-sans",
   subsets: ["latin"],
@@ -84,8 +85,10 @@ jorge miguel mendonça crédito
       >
         <Header />
         {children}
-        <WhatsAppFloat />
+
         <Footer />
+        <WhatsAppFloat />
+        <CookieConsent />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
