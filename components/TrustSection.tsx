@@ -15,10 +15,12 @@ export default function TrustSection() {
         </div>
 
         {/* PARTNERS */}
-        <div className="flex flex-wrap justify-center items-center gap-12 mb-16 opacity-70">
-          <div className="font-semibold text-lg">Banco de Portugal</div>
-          <div className="font-semibold text-lg">Cofidis</div>
-          <div className="font-semibold text-lg">Bicredit</div>
+        <div className="flex flex-wrap justify-center items-center gap-12 mb-16 opacity-90 uppercase">
+          <div className="font-semibold text-lg text-[#c5a059]">
+            Banco de Portugal
+          </div>
+          <div className="font-semibold text-lg text-[#c5a059]">Cofidis</div>
+          <div className="font-semibold text-lg text-[#c5a059]">Bicredit</div>
         </div>
 
         {/* TRUST CARDS */}

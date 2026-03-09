@@ -12,6 +12,21 @@ export default function Simulador() {
 
   const prestacao = (valor * taxa) / (1 - Math.pow(1 + taxa, -meses));
 
+  const enviarWhatsApp = () => {
+    const mensagem = `
+Olá! Gostaria de pedir uma análise de crédito.
+
+Tipo de Crédito: ${tipo}
+Valor Pretendido: €${valor.toLocaleString()}
+Prazo: ${prazo} anos
+Prestação Estimada: €${prestacao.toFixed(2)} / mês
+`;
+
+    const url = `https://wa.me/555596588678?text=${encodeURIComponent(mensagem)}`;
+
+    window.open(url, "_blank");
+  };
+
   return (
     <section className="py-24 bg-gray-50 px-6">
       <div className="max-w-6xl mx-auto">
@@ -36,7 +51,7 @@ export default function Simulador() {
             <select
               value={tipo}
               onChange={(e) => setTipo(e.target.value)}
-              className="w-full mt-2 mb-6 p-3 border rounded-lg"
+              className="w-full mt-2 mb-6 p-3 border rounded-lg text-gray-700"
             >
               <option value="habitação">Crédito Habitação</option>
               <option value="construção">Crédito Construção</option>
@@ -47,7 +62,7 @@ export default function Simulador() {
 
             <label className="text-sm text-gray-600">Valor Pretendido</label>
 
-            <div className="text-xl font-semibold mt-1 mb-3">
+            <div className="text-xl font-semibold mt-1 mb-3 text-[#c5a059]">
               € {valor.toLocaleString()}
             </div>
 
@@ -65,7 +80,9 @@ export default function Simulador() {
 
             <label className="text-sm text-gray-600">Prazo (anos)</label>
 
-            <div className="text-xl font-semibold mt-1 mb-3">{prazo} anos</div>
+            <div className="text-xl font-semibold mt-1 mb-3 text-[#c5a059]">
+              {prazo} anos
+            </div>
 
             <input
               type="range"
@@ -99,7 +116,10 @@ export default function Simulador() {
               <li>✔ Sem compromisso</li>
             </ul>
 
-            <button className="w-full bg-blue-900 text-white py-4 rounded-xl font-semibold hover:bg-blue-800 transition">
+            <button
+              onClick={enviarWhatsApp}
+              className="cursor-pointer w-full bg-blue-900 text-white py-4 rounded-xl font-semibold hover:bg-blue-800 transition"
+            >
               Pedir Análise Gratuita
             </button>
 

@@ -86,7 +86,7 @@ export default function ComoFunciona() {
         {/* CTA */}
         <div className="text-center mt-16">
           <a
-            href="#simulador"
+            href="/simulacao"
             className="bg-[#C5A059] hover:bg-[#b08f4d] text-white font-semibold px-10 py-4 rounded-lg transition"
           >
             Pedir Simulação Gratuita

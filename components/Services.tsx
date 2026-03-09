@@ -34,7 +34,7 @@ export default function Services() {
             </p>
 
             <a
-              href="#simulador"
+              href="/simulacao"
               className="inline-block mt-6 text-[#C5A059] font-semibold"
             >
               Pedir Simulação →
@@ -57,7 +57,7 @@ export default function Services() {
             </p>
 
             <a
-              href="#simulador"
+              href="/simulacao"
               className="inline-block mt-6 text-[#C5A059] font-semibold"
             >
               Pedir Simulação →
@@ -80,7 +80,7 @@ export default function Services() {
             </p>
 
             <a
-              href="#simulador"
+              href="/simulacao"
               className="inline-block mt-6 text-[#C5A059] font-semibold"
             >
               Pedir Simulação →
