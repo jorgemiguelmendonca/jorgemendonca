@@ -1,9 +1,28 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Hero() {
   const [creditType, setCreditType] = useState("Habitação");
+  const router = useRouter();
+
+  const [amount, setAmount] = useState("");
+  const [income, setIncome] = useState("");
+
+  const sendToWhatsApp = () => {
+    const message = `
+Olá! Gostaria de solicitar uma simulação de crédito.
+
+Tipo de Crédito: ${creditType}
+Valor Pretendido: €${amount}
+Rendimento Mensal: €${income}
+`;
+
+    const url = `https://wa.me/555596588678?text=${encodeURIComponent(message)}`;
+
+    window.open(url, "_blank");
+  };
 
   return (
     <section className="heroMaster relative w-full bg-[#F8F9FA] py-20">
@@ -41,11 +60,21 @@ export default function Hero() {
 
           {/* CTA */}
           <div className="flex gap-4 mt-8">
-            <button className="bg-[#C5A059] hover:bg-[#b08f4d] text-white font-semibold px-8 py-4 rounded-lg transition">
+            <button
+              className="bg-[#C5A059] hover:bg-[#b08f4d] text-white font-semibold px-8 py-4 rounded-lg transition cursor-pointer"
+              onClick={() => router.push("/simulacao")}
+            >
               Pedir Simulação
             </button>
 
-            <button className="border border-gray-300 px-8 py-4 rounded-lg font-medium hover:bg-gray-100">
+            <button
+              className="border border-gray-300 px-8 py-4 rounded-lg font-medium hover:bg-gray-100 hover:text-[#c5a059] transition cursor-pointer"
+              onClick={() =>
+                window.open(
+                  "https://wa.me/5555996588678?text=Olá,%20visitei%20o%20site%20e%20gostaria%20de%20falar%20com%20um%20especialista%20sobre%20soluções%20de%20crédito.",
+                )
+              }
+            >
               Falar com Especialista
             </button>
           </div>
@@ -70,7 +99,7 @@ export default function Hero() {
             <select
               value={creditType}
               onChange={(e) => setCreditType(e.target.value)}
-              className="w-full mt-2 border border-gray-300 rounded-lg p-3"
+              className="w-full mt-2 border border-gray-300 rounded-lg p-3 text-gray-600"
             >
               <option>Habitação</option>
               <option>Construção</option>
@@ -87,7 +116,9 @@ export default function Hero() {
             <input
               type="number"
               placeholder="Ex: 150000"
-              className="w-full mt-2 border border-gray-300 rounded-lg p-3"
+              value={amount}
+              onChange={(e) => setAmount(e.target.value)}
+              className="w-full mt-2 border border-gray-300 rounded-lg p-3 text-gray-600"
             />
           </div>
 
@@ -100,12 +131,17 @@ export default function Hero() {
             <input
               type="number"
               placeholder="Ex: 2500"
-              className="w-full mt-2 border border-gray-300 rounded-lg p-3"
+              value={income}
+              onChange={(e) => setIncome(e.target.value)}
+              className="w-full mt-2 border border-gray-300 rounded-lg p-3 text-gray-600"
             />
           </div>
 
           {/* CTA */}
-          <button className="w-full bg-[#1A2B4C] hover:bg-[#16233f] text-white font-semibold py-4 rounded-lg mt-4 transition">
+          <button
+            className="w-full bg-[#1A2B4C] hover:bg-[#16233f] text-white font-semibold py-4 rounded-lg mt-4 transition cursor-pointer"
+            onClick={sendToWhatsApp}
+          >
             Receber Simulação Gratuita
           </button>
 
