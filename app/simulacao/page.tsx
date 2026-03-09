@@ -155,7 +155,7 @@ export default function Simulacao() {
         {step === 3 && (
           <div>
             <h2 className="text-2xl font-semibold mb-6 text-[#c5a059]">
-              Qual o seu rendimento mensal?
+              Qual é o seu rendimento mensal?
             </h2>
 
             <input
