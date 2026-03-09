@@ -85,7 +85,6 @@ jorge miguel mendonça crédito
       >
         <Header />
         {children}
-
         <Footer />
         <WhatsAppFloat />
         <CookieConsent />
