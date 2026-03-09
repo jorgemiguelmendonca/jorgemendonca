@@ -10,7 +10,6 @@ export default function SobrePage() {
       <HeroSobre />
       <NossaHistoria />
       <MissaoVisaoValores />
-      <NumerosEmpresa />
       <CTAAnaliseCredito />
     </>
   );

@@ -1,29 +1,34 @@
-import { Link } from "lucide-react";
+import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#1A2B4C] text-white ">
+    <footer className="bg-[#1A2B4C] text-white">
       <div className="max-w-7xl mx-auto px-6 py-14 grid md:grid-cols-3 gap-10">
-        {/* MARCA */}
+        {/* EMPRESA */}
 
         <div>
-          <h3 className="text-xl font-semibold mb-4">Jorge Mendonça</h3>
+          <h3 className="text-xl font-semibold mb-4 text-[#c5a059] uppercase">
+            Jorge Miguel Mendonça
+          </h3>
 
           <p className="text-sm text-gray-300 leading-relaxed">
-            Intermediação de Crédito especializada em soluções de financiamento
-            para habitação, construção e consolidação de créditos.
+            Intermediário de Crédito Vinculado registado no Banco de Portugal
+            sob o n.º{" "}
+            <strong className="text-[#c5a059] uppercase">0001707</strong>.
           </p>
 
           <p className="text-sm text-gray-300 mt-4">
-            Atuamos com transparência, rigor financeiro e total conformidade com
-            a legislação portuguesa.
+            Especializado em soluções de financiamento para habitação,
+            construção e consolidação de créditos.
           </p>
         </div>
 
-        {/* LINKS */}
+        {/* NAVEGAÇÃO */}
 
         <div>
-          <h4 className="font-semibold mb-4">Navegação</h4>
+          <h4 className="font-semibold mb-4 text-[#c5a059] uppercase">
+            Navegação
+          </h4>
 
           <ul className="space-y-2 text-gray-300 text-sm">
             <li>
@@ -33,21 +38,27 @@ export default function Footer() {
             </li>
 
             <li>
-              <a href="/servicos" className="hover:text-white">
+              <Link href="/servicos" className="hover:text-white">
                 Serviços
-              </a>
+              </Link>
             </li>
 
             <li>
-              <a href="/sobre" className="hover:text-white">
+              <Link href="/sobre" className="hover:text-white">
                 Sobre Nós
-              </a>
+              </Link>
             </li>
 
             <li>
-              <a href="/contactos" className="hover:text-white">
+              <Link href="/contactos" className="hover:text-white">
                 Contactos
-              </a>
+              </Link>
+            </li>
+
+            <li>
+              <Link href="/simulacao" className="hover:text-white">
+                Simulação
+              </Link>
             </li>
           </ul>
         </div>
@@ -55,62 +66,76 @@ export default function Footer() {
         {/* CONTACTOS */}
 
         <div>
-          <h4 className="font-semibold mb-4">Contactos</h4>
+          <h4 className="font-semibold mb-4 text-[#c5a059] uppercase">
+            Contactos
+          </h4>
 
           <ul className="text-sm text-gray-300 space-y-2">
-            <li>Lugar Pontinha, s/n</li>
+            <li>
+              <a href="tel:+351965710640" className="hover:text-white">
+                +351 965 710 640
+              </a>
+            </li>
 
-            <li>9875-116 Topo</li>
+            <li>
+              <a
+                href="mailto:jorgemiguel26@sapo.pt"
+                className="hover:text-white"
+              >
+                jorgemiguel26@sapo.pt
+              </a>
+            </li>
 
-            <li>Calheta – Ilha de São Jorge</li>
-
-            <li>Açores, Portugal</li>
+            <li className="pt-2">
+              Lugar Pontinha, s/n
+              <br />
+              9875-116 Topo, Calheta
+              <br />
+              Ilha de São Jorge, Açores
+            </li>
           </ul>
         </div>
       </div>
 
-      {/* DIVISÃO */}
+      {/* LINHA */}
 
       <div className="border-t border-blue-800"></div>
 
-      {/* BLOCO LEGAL */}
+      {/* INFORMAÇÃO LEGAL */}
 
-      <div className="max-w-7xl mx-auto px-6 py-8 text-xs text-gray-300 leading-relaxed">
-        <p className="mb-2">
-          <strong>Jorge Miguel Mendonça, Unipessoal Lda.</strong>, com sede no
-          Lugar Pontinha, s/n, 9875-116 Topo, Calheta (Açores). Intermediário de
-          Crédito Vinculado registado no Banco de Portugal sob o n.º
-          <strong> 0001707</strong>.
-        </p>
-
-        <p className="mb-2">
-          Serviços de intermediação de crédito: apresentação ou proposta de
-          contratos de crédito a consumidores e assistência em atos
-          preparatórios.
-        </p>
-
-        <p className="mb-2">
-          Mutuantes vinculados: <strong>Cofidis</strong> e
-          <strong> Bicredit – Sociedade Financeira de Crédito, S.A.</strong>
-        </p>
-
-        <p className="mb-2">
-          Seguro de responsabilidade civil profissional contratado junto da
-          <strong> Hiscox S.A. – Sucursal em Portugal</strong> (Apólice n.º
-          2522203).
+      <div className="max-w-7xl mx-auto px-6 py-8 text-xs text-gray-300 leading-relaxed space-y-2">
+        <p>
+          <strong className="text-[#c5a059]">
+            Jorge Miguel Mendonça, Unipessoal Lda.
+          </strong>{" "}
+          – NIF: [A definir].
         </p>
 
         <p>
-          O intermediário de crédito não está autorizado a receber ou entregar
-          quaisquer valores relacionados com a formação, execução ou cumprimento
-          antecipado dos contratos de crédito.
+          Mutuantes vinculados:{" "}
+          <strong className="text-[#c5a059]">Cofidis</strong> e{" "}
+          <strong className="text-[#c5a059]">
+            Bicredit – Sociedade Financeira de Crédito, S.A.
+          </strong>
+        </p>
+
+        <p>
+          Seguro de Responsabilidade Civil Profissional contratado junto da{" "}
+          <strong className="text-[#c5a059]">Hiscox S.A.</strong> – Apólice n.º{" "}
+          <strong className="text-[#c5a059]">2522203</strong>.
+        </p>
+
+        <p>
+          O intermediário de crédito está isento de receção ou entrega de
+          quaisquer valores de clientes, conforme o Art.º 46.º do Regime
+          Jurídico dos Intermediários de Crédito (RJIC).
         </p>
       </div>
 
       {/* COPYRIGHT */}
 
       <div className="text-center text-xs text-gray-400 pb-6">
-        © {new Date().getFullYear()} Jorge Mendonça – Intermediação de Crédito
+        © 2026 Jorge Miguel Mendonça — Todos os direitos reservados
       </div>
     </footer>
   );

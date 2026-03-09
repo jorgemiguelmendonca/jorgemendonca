@@ -7,9 +7,8 @@ export default function HeroContactos() {
         </h1>
 
         <p className="text-lg text-gray-200 max-w-2xl mx-auto">
-          Tem dúvidas sobre crédito habitação, construção ou consolidação de
-          dívidas? A nossa equipa está disponível para analisar o seu caso e
-          apresentar a melhor solução.
+          Estamos disponíveis para esclarecer as suas dúvidas e ajudá-lo a
+          encontrar a melhor solução de crédito
         </p>
       </div>
     </section>

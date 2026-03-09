@@ -28,21 +28,21 @@ export default function FormularioContato() {
   }
 
   return (
-    <section className="py-20 px-6 bg-gray-50">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+    <section className="py-20 px-6 bg-gray-50 bg-[linear-gradient(rgba(10,20,40,0.75),rgba(10,20,40,0.75)),url('/contacto.png')] bg-cover bg-top  ">
+      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-baseline">
         {/* TEXTO */}
         <div>
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">
+          <h2 className="text-3xl font-bold text-[#c5a059] mb-6 uppercase">
             Fale com um especialista em crédito
           </h2>
 
-          <p className="text-gray-600 mb-6">
+          <p className="text-white mb-6">
             Se preferir, envie-nos uma mensagem através do formulário. A nossa
             equipa irá analisar o seu pedido e entrar em contacto o mais
             rapidamente possível.
           </p>
 
-          <ul className="space-y-3 text-gray-700">
+          <ul className="space-y-3 text-gray-100">
             <li>✔ Resposta rápida</li>
             <li>✔ Análise gratuita do seu perfil</li>
             <li>✔ Atendimento personalizado</li>
@@ -56,7 +56,7 @@ export default function FormularioContato() {
           className="bg-white p-10 rounded-xl shadow-lg border space-y-6"
         >
           <div>
-            <label className="block text-sm font-medium mb-2">
+            <label className="block text-sm font-medium mb-2 text-[#1A2B4C]">
               Nome completo
             </label>
             <input
@@ -65,42 +65,48 @@ export default function FormularioContato() {
               value={form.nome}
               onChange={handleChange}
               required
-              className="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-[#C5A059] outline-none"
+              className="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-[#C5A059] outline-none text-[#1A2B4C]"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-2">Email</label>
+            <label className="block text-sm font-medium mb-2 text-[#1A2B4C]">
+              Email
+            </label>
             <input
               type="email"
               name="email"
               value={form.email}
               onChange={handleChange}
               required
-              className="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-[#C5A059] outline-none"
+              className="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-[#C5A059] outline-none text-[#1A2B4C]"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-2">Telefone</label>
+            <label className="block text-sm font-medium mb-2 text-[#1A2B4C]">
+              Telefone
+            </label>
             <input
               type="tel"
               name="telefone"
               value={form.telefone}
               onChange={handleChange}
               required
-              className="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-[#C5A059] outline-none"
+              className="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-[#C5A059] outline-none text-[#1A2B4C]"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-2">Mensagem</label>
+            <label className="block text-sm font-medium mb-2 text-[#1A2B4C]">
+              Mensagem
+            </label>
             <textarea
               name="mensagem"
               rows={4}
               value={form.mensagem}
               onChange={handleChange}
-              className="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-[#C5A059] outline-none"
+              className="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-[#C5A059] outline-none text-[#1A2B4C]"
             />
           </div>
 

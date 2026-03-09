@@ -9,13 +9,17 @@ export default function MissaoVisaoValores() {
         <div className="grid md:grid-cols-3 gap-8">
           {/* MISSÃO */}
           <div className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition">
-            <div className="w-12 h-12 bg-blue-100 text-blue-600 flex items-center justify-center rounded-lg mb-4 mx-auto">
-              🚀
+            <div className="flex items-center gap-4">
+              {" "}
+              <div className="w-12 h-12 bg-blue-100 text-blue-600 flex items-center justify-center rounded-lg mb-4 ">
+                🚀
+              </div>
+              <h3 className="text-xl uppercase font-semibold text-gray-800">
+                Missão
+              </h3>
             </div>
 
-            <h3 className="text-xl font-semibold text-gray-800 mb-4">Missão</h3>
-
-            <p className="text-gray-600 leading-relaxed">
+            <p className="text-gray-600 leading-relaxed text-left">
               Facilitar o acesso ao crédito de forma segura, transparente e
               acessível, conectando nossos clientes às melhores soluções
               financeiras disponíveis no mercado.
@@ -24,13 +28,17 @@ export default function MissaoVisaoValores() {
 
           {/* VISÃO */}
           <div className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition">
-            <div className="w-12 h-12 bg-blue-100 text-blue-600 flex items-center justify-center rounded-lg mb-4 mx-auto">
-              👁
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 bg-blue-100 text-blue-600 flex items-center justify-center rounded-lg mb-4 ">
+                👁
+              </div>
+
+              <h3 className="text-xl font-semibold text-gray-800 mb-4 uppercase">
+                Visão
+              </h3>
             </div>
 
-            <h3 className="text-xl font-semibold text-gray-800 mb-4">Visão</h3>
-
-            <p className="text-gray-600 leading-relaxed">
+            <p className="text-gray-600 leading-relaxed text-left">
               Ser reconhecida como uma referência em soluções financeiras,
               oferecendo atendimento de excelência e gerando resultados reais
               para nossos clientes.
@@ -39,15 +47,17 @@ export default function MissaoVisaoValores() {
 
           {/* VALORES */}
           <div className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition">
-            <div className="w-12 h-12 bg-blue-100 text-blue-600 flex items-center justify-center rounded-lg mb-4 mx-auto">
-              ⭐
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 bg-blue-100 text-blue-600 flex items-center justify-center rounded-lg mb-4 ">
+                ⭐
+              </div>
+
+              <h3 className="text-xl font-semibold text-gray-800 mb-4 uppercase">
+                Valores
+              </h3>
             </div>
 
-            <h3 className="text-xl font-semibold text-gray-800 mb-4">
-              Valores
-            </h3>
-
-            <p className="text-gray-600 leading-relaxed">
+            <p className="text-gray-600 leading-relaxed text-left">
               Transparência, responsabilidade, compromisso com resultados e
               respeito total aos nossos clientes.
             </p>
