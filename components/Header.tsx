@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -27,7 +28,7 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-[#1A2B4C] rounded-lg flex items-center justify-center text-white font-bold">
+            <div className="w-10 h-10 bg-[#1A2B4C] text-[#c5a059] rounded-lg flex items-center justify-center  font-bold">
               JM
             </div>
 

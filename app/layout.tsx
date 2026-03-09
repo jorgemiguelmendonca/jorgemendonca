@@ -74,9 +74,10 @@ jorge miguel mendonça crédito
 
         <meta
           property="og:image"
-          content="https://intermedcredit.vercel.app/og-image.jpg"
+          content="https://intermedcredit.vercel.app/logo-meta.png"
         />
         <link rel="canonical" href="https://intermedcredit.vercel.app/" />
+        <link rel="shortcut icon" href="/logo-meta.png" type="image/x-icon" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
