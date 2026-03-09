@@ -3,10 +3,10 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-
+import { useRouter } from "next/navigation";
 export default function Header() {
   const [open, setOpen] = useState(false);
-
+  const router = useRouter();
   return (
     <header className="w-full bg-white border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -44,7 +44,7 @@ export default function Header() {
         {/* CTA */}
         <div className="hidden md:block">
           <Link
-            href="#simulador"
+            href="/simulacao"
             className="bg-[#C5A059] hover:bg-[#b08f4d] text-white font-semibold px-6 py-3 rounded-lg transition"
           >
             Pedir Simulação
