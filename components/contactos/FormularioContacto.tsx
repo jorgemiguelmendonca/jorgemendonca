@@ -1,141 +1,158 @@
 "use client";
 
 import { useState } from "react";
-import { Send } from "lucide-react";
 
-export default function FormularioContato() {
+export default function ServicosCTA() {
   const [form, setForm] = useState({
     nome: "",
-    email: "",
-    telefone: "",
-    mensagem: "",
+    whatsapp: "",
+    tipo: "Habitação",
+    valor: "",
+    renda: "",
   });
 
-  function handleChange(
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+  ) => {
     setForm({
       ...form,
       [e.target.name]: e.target.value,
     });
-  }
+  };
 
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
+  const enviarEmail = async () => {
+    if (!form.nome || !form.whatsapp || !form.valor) {
+      alert("Preencha os campos obrigatórios.");
+      return;
+    }
 
-    const mensagem = `Olá, gostaria de obter mais informações.
+    try {
+      const res = await fetch("/api/lead", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          formType: "pre-analise",
+          data: form,
+        }),
+      });
 
-Nome: ${form.nome}
-Email: ${form.email}
-Telefone: ${form.telefone}
+      const data = await res.json();
 
-Mensagem:
-${form.mensagem}`;
+      if (data.success) {
+        alert("Pedido enviado com sucesso!");
 
-    const url = `https://wa.me/351965710640?text=${encodeURIComponent(mensagem)}`;
-
-    window.open(url, "_blank");
-
-    // limpar formulário
-    setForm({
-      nome: "",
-      email: "",
-      telefone: "",
-      mensagem: "",
-    });
-  }
+        setForm({
+          nome: "",
+          whatsapp: "",
+          tipo: "Habitação",
+          valor: "",
+          renda: "",
+        });
+      } else {
+        alert("Erro ao enviar pedido.");
+      }
+    } catch (error) {
+      alert("Erro ao enviar pedido.");
+    }
+  };
 
   return (
-    <section className="py-20 px-6 bg-gray-50 bg-[linear-gradient(rgba(10,20,40,0.75),rgba(10,20,40,0.75)),url('/contacto.png')] bg-cover bg-top">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-baseline">
+    <section className="bg-[linear-gradient(rgba(10,20,40,0.75),rgba(10,20,40,0.75)),url('/hero.png')] bg-cover bg-bottom py-20 px-6">
+      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-baseline">
         {/* TEXTO */}
-        <div>
-          <h2 className="text-3xl font-bold text-[#c5a059] mb-6 uppercase">
-            Fale com um especialista em crédito
+        <div className="text-white">
+          <h2 className="text-4xl font-bold mb-6">
+            Faça agora sua pré-análise de crédito
           </h2>
 
-          <p className="text-white mb-6">
-            Se preferir, envie-nos uma mensagem através do formulário. A nossa
-            equipa irá analisar o seu pedido e entrar em contacto o mais
-            rapidamente possível.
+          <p className="text-lg text-white mb-8">
+            Descubra rapidamente quanto você pode conseguir de crédito.
           </p>
 
-          <ul className="space-y-3 text-gray-100">
-            <li>✔ Resposta rápida</li>
-            <li>✔ Análise gratuita do seu perfil</li>
-            <li>✔ Atendimento personalizado</li>
-            <li>✔ Total confidencialidade dos seus dados</li>
-          </ul>
+          <div className="flex flex-col gap-2 text-white text-sm">
+            <span>✔ Análise rápida</span>
+            <span>✔ Sem compromisso</span>
+            <span>✔ Atendimento especializado</span>
+          </div>
         </div>
 
         {/* FORM */}
-        <form
-          onSubmit={handleSubmit}
-          className="bg-white p-10 rounded-xl shadow-lg border space-y-6"
-        >
-          <div>
-            <label className="block text-sm font-medium mb-2 text-[#1A2B4C]">
-              Nome completo
-            </label>
-            <input
-              type="text"
-              name="nome"
-              value={form.nome}
-              onChange={handleChange}
-              required
-              className="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-[#C5A059] outline-none text-[#1A2B4C]"
-            />
-          </div>
+        <div className="bg-white p-8 rounded-2xl shadow-xl">
+          <h3 className="text-2xl font-semibold text-[#1A2B4C]">
+            Simule o seu Crédito
+          </h3>
 
-          <div>
-            <label className="block text-sm font-medium mb-2 text-[#1A2B4C]">
-              Email
-            </label>
-            <input
-              type="email"
-              name="email"
-              value={form.email}
-              onChange={handleChange}
-              required
-              className="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-[#C5A059] outline-none text-[#1A2B4C]"
-            />
-          </div>
+          <p className="text-gray-500 mb-6">
+            Pedido rápido em menos de 2 minutos
+          </p>
 
-          <div>
-            <label className="block text-sm font-medium mb-2 text-[#1A2B4C]">
-              Telefone
-            </label>
-            <input
-              type="tel"
-              name="telefone"
-              value={form.telefone}
-              onChange={handleChange}
-              required
-              className="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-[#C5A059] outline-none text-[#1A2B4C]"
-            />
-          </div>
+          {/* NOME */}
+          <input
+            type="text"
+            name="nome"
+            placeholder="Seu nome"
+            value={form.nome}
+            onChange={handleChange}
+            className="w-full mb-4 border border-[#1A2B4C] rounded-lg p-3 text-[#1A2B4C]"
+          />
 
-          <div>
-            <label className="block text-sm font-medium mb-2 text-[#1A2B4C]">
-              Mensagem
-            </label>
-            <textarea
-              name="mensagem"
-              rows={4}
-              value={form.mensagem}
-              onChange={handleChange}
-              className="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-[#C5A059] outline-none text-[#1A2B4C]"
-            />
-          </div>
+          {/* WHATSAPP */}
+          <input
+            type="text"
+            name="whatsapp"
+            placeholder="Seu WhatsApp"
+            value={form.whatsapp}
+            onChange={handleChange}
+            className="w-full mb-4 border border-[#1A2B4C] rounded-lg p-3 text-[#1A2B4C]"
+          />
 
-          <button
-            type="submit"
-            className="w-full bg-[#C5A059] hover:bg-[#b8934f] text-white font-semibold py-3 rounded-lg transition flex items-center justify-center gap-2"
+          {/* TIPO */}
+          <select
+            name="tipo"
+            value={form.tipo}
+            onChange={handleChange}
+            className="w-full mb-4 border border-[#1A2B4C] rounded-lg p-3 text-[#1A2B4C]"
           >
-            <Send size={18} />
-            Enviar pelo WhatsApp
+            <option>Habitação</option>
+            <option>Construção</option>
+            <option>Consolidação de Dívidas</option>
+          </select>
+
+          {/* VALOR */}
+          <input
+            type="number"
+            name="valor"
+            placeholder="Valor pretendido (€)"
+            value={form.valor}
+            onChange={handleChange}
+            className="w-full mb-4 border border-[#1A2B4C] rounded-lg p-3 text-[#1A2B4C]"
+          />
+
+          {/* RENDA */}
+          <input
+            type="number"
+            name="renda"
+            placeholder="Rendimento mensal (€)"
+            value={form.renda}
+            onChange={handleChange}
+            className="w-full mb-4 border border-[#1A2B4C] rounded-lg p-3 text-[#1A2B4C]"
+          />
+
+          {/* BOTÃO */}
+          <button
+            onClick={enviarEmail}
+            className="w-full bg-[#1A2B4C] hover:bg-[#16233f] text-white font-semibold py-4 rounded-lg mt-4 transition cursor-pointer"
+          >
+            Receber Simulação Gratuita
           </button>
-        </form>
+
+          <p className="text-xs text-gray-400 mt-4 text-center">
+            Os seus dados são protegidos e usados apenas para análise de
+            crédito.
+          </p>
+        </div>
       </div>
     </section>
   );

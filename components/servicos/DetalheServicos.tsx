@@ -112,7 +112,7 @@ export default function DetalheServicos() {
             </ul>
 
             <Link
-              href="#simulador"
+              href="/simulacao"
               className="inline-block mt-6 bg-[#C5A059] hover:bg-[#b8934f] text-white px-6 py-3 rounded-lg font-medium transition"
             >
               Pedir Simulação

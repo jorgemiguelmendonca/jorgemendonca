@@ -29,30 +29,41 @@ export default function Simulacao() {
 
   const progress = (step / 5) * 100;
 
-  const sendToWhatsApp = () => {
-    const phone = "351965710640"; // número do dono do site (com código do país)
+  const sendSimulation = async () => {
+    if (!canProceed()) return;
 
-    const message = `
-*Nova Simulação de Crédito*
+    try {
+      const res = await fetch("/api/simulacao-completa", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
 
-Tipo de Crédito: ${form.creditType}
+      const data = await res.json();
 
-Valor Pretendido: €${form.amount}
+      if (data.success) {
+        alert("Simulação enviada com sucesso!");
 
-Rendimento Mensal: €${form.income}
+        setForm({
+          creditType: "",
+          amount: "",
+          income: "",
+          employment: "",
+          name: "",
+          email: "",
+          phone: "",
+        });
 
-Situação Profissional: ${form.employment}
-
-Nome: ${form.name}
-Email: ${form.email}
-Telefone: ${form.phone}
-  `;
-
-    const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-
-    window.open(url, "_blank");
+        setStep(1);
+      } else {
+        alert("Erro ao enviar simulação.");
+      }
+    } catch (error) {
+      alert("Erro ao enviar simulação.");
+    }
   };
-
   const canProceed = () => {
     if (step === 1) return form.creditType !== "";
     if (step === 2) return form.amount !== "";
@@ -233,7 +244,7 @@ Telefone: ${form.phone}
               </button>
 
               <button
-                onClick={sendToWhatsApp}
+                onClick={sendSimulation}
                 disabled={!canProceed()}
                 className={`px-6 py-2 rounded-lg text-white ${
                   canProceed()

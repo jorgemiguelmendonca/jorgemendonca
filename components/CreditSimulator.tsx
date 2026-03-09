@@ -12,19 +12,30 @@ export default function Simulador() {
 
   const prestacao = (valor * taxa) / (1 - Math.pow(1 + taxa, -meses));
 
-  const enviarWhatsApp = () => {
-    const mensagem = `
-Olá! Gostaria de pedir uma análise de crédito.
+  const enviarEmail = async () => {
+    const res = await fetch("/api/lead", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        formType: "simulacao",
+        data: {
+          tipo,
+          valor,
+          prazo,
+          prestacao: prestacao.toFixed(2),
+        },
+      }),
+    });
 
-Tipo de Crédito: ${tipo}
-Valor Pretendido: €${valor.toLocaleString()}
-Prazo: ${prazo} anos
-Prestação Estimada: €${prestacao.toFixed(2)} / mês
-`;
+    const data = await res.json();
 
-    const url = `https://wa.me/351965710640?text=${encodeURIComponent(mensagem)}`;
-
-    window.open(url, "_blank");
+    if (data.success) {
+      alert("Simulação enviada com sucesso!");
+    } else {
+      alert("Erro ao enviar simulação.");
+    }
   };
 
   return (
@@ -117,7 +128,7 @@ Prestação Estimada: €${prestacao.toFixed(2)} / mês
             </ul>
 
             <button
-              onClick={enviarWhatsApp}
+              onClick={enviarEmail}
               className="cursor-pointer w-full bg-blue-900 text-white py-4 rounded-xl font-semibold hover:bg-blue-800 transition"
             >
               Pedir Análise Gratuita

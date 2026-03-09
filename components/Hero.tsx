@@ -9,25 +9,42 @@ export default function Hero() {
   const [creditType, setCreditType] = useState("Habitação");
   const [amount, setAmount] = useState("");
   const [income, setIncome] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const sendToWhatsApp = () => {
+  async function handleSubmit() {
     if (!amount || !income) {
       alert("Por favor preencha o valor pretendido e o rendimento mensal.");
       return;
     }
 
-    const message = `Olá! Gostaria de solicitar uma simulação de crédito.
+    setLoading(true);
 
-Tipo de Crédito: ${creditType}
-Valor Pretendido: €${amount}
-Rendimento Mensal: €${income}
+    const response = await fetch("/api/lead", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        formType: "hero",
+        data: {
+          creditType,
+          amount,
+          income,
+        },
+      }),
+    });
 
-Enviei este pedido através do site.`;
+    setLoading(false);
 
-    const url = `https://wa.me/351965710640?text=${encodeURIComponent(message)}`;
+    if (response.ok) {
+      alert("Pedido enviado com sucesso! Entraremos em contacto em breve.");
 
-    window.open(url, "_blank");
-  };
+      setAmount("");
+      setIncome("");
+    } else {
+      alert("Erro ao enviar pedido.");
+    }
+  }
 
   return (
     <section className="heroMaste relative w-full bg-[#F8F9FA] py-20">
@@ -43,7 +60,7 @@ Enviei este pedido através do site.`;
       <div className="relative max-w-7xl mx-auto px-3 grid md:grid-cols-2 gap-16 items-center mt-10">
         {/* LEFT SIDE */}
         <div>
-          <span className="bg-[#1A2B4C]/80 text-[#c5a059]  px-3 py-2 rounded-full text-sm font-medium">
+          <span className="bg-[#1A2B4C]/80 text-[#c5a059] px-3 py-2 rounded-full text-sm font-medium">
             Intermediário de Crédito Registrado no Banco de Portugal
           </span>
 
@@ -56,14 +73,12 @@ Enviei este pedido através do site.`;
             Portugal.
           </p>
 
-          {/* BENEFITS */}
           <div className="flex flex-col gap-3 mt-6 text-gray-200">
             <p>✔ Serviço gratuito para o cliente</p>
             <p>✔ Resposta em 48 a 72 horas</p>
             <p>✔ Análise personalizada do seu perfil</p>
           </div>
 
-          {/* CTA */}
           <div className="flex gap-4 mt-8">
             <button
               className="bg-[#C5A059] hover:bg-[#b08f4d] text-white font-semibold px-8 py-4 rounded-lg transition cursor-pointer"
@@ -75,10 +90,7 @@ Enviei este pedido através do site.`;
             <button
               className="border border-gray-300 px-8 py-4 rounded-lg font-medium hover:bg-gray-100 hover:text-[#c5a059] transition cursor-pointer"
               onClick={() =>
-                window.open(
-                  "https://wa.me/351965710640?text=Olá,%20visitei%20o%20site%20e%20gostaria%20de%20falar%20com%20um%20especialista%20sobre%20soluções%20de%20crédito.",
-                  "_blank",
-                )
+                window.open("https://wa.me/351965710640", "_blank")
               }
             >
               Falar com Especialista
@@ -86,8 +98,8 @@ Enviei este pedido através do site.`;
           </div>
         </div>
 
-        {/* RIGHT SIDE - SIMULATOR */}
-        <div className="bg-white p-8 rounded-2xl shadow-xl ">
+        {/* RIGHT SIDE - FORM */}
+        <div className="bg-white p-8 rounded-2xl shadow-xl">
           <h3 className="text-2xl font-semibold text-[#1A2B4C]">
             Simule o seu Crédito
           </h3>
@@ -96,7 +108,6 @@ Enviei este pedido através do site.`;
             Pedido rápido em menos de 2 minutos
           </p>
 
-          {/* CREDIT TYPE */}
           <div className="mb-4">
             <label className="text-sm font-medium text-gray-700">
               Tipo de Crédito
@@ -113,7 +124,6 @@ Enviei este pedido através do site.`;
             </select>
           </div>
 
-          {/* VALUE */}
           <div className="mb-4">
             <label className="text-sm font-medium text-gray-700">
               Valor Pretendido (€)
@@ -128,7 +138,6 @@ Enviei este pedido através do site.`;
             />
           </div>
 
-          {/* INCOME */}
           <div className="mb-4">
             <label className="text-sm font-medium text-gray-700">
               Rendimento Mensal (€)
@@ -143,12 +152,12 @@ Enviei este pedido através do site.`;
             />
           </div>
 
-          {/* CTA */}
           <button
             className="w-full bg-[#1A2B4C] hover:bg-[#16233f] text-white font-semibold py-4 rounded-lg mt-4 transition cursor-pointer"
-            onClick={sendToWhatsApp}
+            onClick={handleSubmit}
+            disabled={loading}
           >
-            Receber Simulação Gratuita
+            {loading ? "Enviando..." : "Receber Simulação Gratuita"}
           </button>
 
           <p className="text-xs text-gray-400 mt-4 text-center">

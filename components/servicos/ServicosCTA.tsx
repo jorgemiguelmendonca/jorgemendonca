@@ -20,25 +20,42 @@ export default function ServicosCTA() {
     });
   };
 
-  const enviarWhatsapp = () => {
+  const enviarEmail = async () => {
     if (!form.nome || !form.whatsapp || !form.valor) {
       alert("Preencha os campos obrigatórios.");
       return;
     }
 
-    const mensagem = `Olá, gostaria de fazer uma pré-análise de crédito.
+    try {
+      const res = await fetch("/api/lead", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          formType: "pre-analise",
+          data: form,
+        }),
+      });
 
-Nome: ${form.nome}
-WhatsApp: ${form.whatsapp}
-Tipo de crédito: ${form.tipo}
-Valor pretendido: € ${form.valor}
-Rendimento mensal: € ${form.renda}`;
+      const data = await res.json();
 
-    const url = `https://wa.me/351965710640?text=${encodeURIComponent(
-      mensagem,
-    )}`;
+      if (data.success) {
+        alert("Pedido enviado com sucesso!");
 
-    window.open(url, "_blank");
+        setForm({
+          nome: "",
+          whatsapp: "",
+          tipo: "Habitação",
+          valor: "",
+          renda: "",
+        });
+      } else {
+        alert("Erro ao enviar pedido.");
+      }
+    } catch (error) {
+      alert("Erro ao enviar pedido.");
+    }
   };
 
   return (
@@ -96,7 +113,7 @@ Rendimento mensal: € ${form.renda}`;
             name="tipo"
             value={form.tipo}
             onChange={handleChange}
-            className="w-full mb-4 border border-[#1A2B4C]rounded-lg p-3 text-[#1A2B4C]"
+            className="w-full mb-4 border border-[#1A2B4C] rounded-lg p-3 text-[#1A2B4C]"
           >
             <option>Habitação</option>
             <option>Construção</option>
@@ -125,7 +142,7 @@ Rendimento mensal: € ${form.renda}`;
 
           {/* BOTÃO */}
           <button
-            onClick={enviarWhatsapp}
+            onClick={enviarEmail}
             className="w-full bg-[#1A2B4C] hover:bg-[#16233f] text-white font-semibold py-4 rounded-lg mt-4 transition cursor-pointer"
           >
             Receber Simulação Gratuita

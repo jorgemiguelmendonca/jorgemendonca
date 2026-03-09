@@ -131,7 +131,20 @@ export default function Footer() {
           Jurídico dos Intermediários de Crédito (RJIC).
         </p>
       </div>
-
+      <div className="flex gap-4 text-sm text-gray-400 items-center justify-center mb-4">
+        <Link href="/politica-privacidade" className="hover:text-amber-200">
+          Política de Privacidade
+        </Link>
+        <Link href="/termos" className="hover:text-amber-200">
+          Termos
+        </Link>
+        <Link href="/rgpd" className="hover:text-amber-200">
+          RGPD
+        </Link>
+        <Link href="/aviso-legal" className="hover:text-amber-200">
+          Aviso Legal
+        </Link>
+      </div>
       {/* COPYRIGHT */}
 
       <div className="text-center text-xs text-gray-400 pb-6">
