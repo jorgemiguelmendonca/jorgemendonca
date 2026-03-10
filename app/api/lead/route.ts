@@ -87,8 +87,8 @@ export async function POST(req: Request) {
     // ENVIO DO EMAIL
     // =========================
     await resend.emails.send({
-      from: "Jorge Miguel Mendonça <onboarding@resend.dev>",
-      to: "clintindossites@gmail.com",
+      from: "Jorge Miguel Mendonça <intermediario@jorgemendonca.com>",
+      to: "intermediario@jorgemendonca.com",
       subject,
       html,
     });
