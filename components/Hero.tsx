@@ -86,12 +86,12 @@ export default function Hero() {
               Pedir Simulação
             </button>
 
-            <button
+            {/*<button
               className="border border-gray-300 px-8 py-4 rounded-lg font-medium hover:bg-gray-100 hover:text-[#c5a059] transition cursor-pointer"
               onClick={() => window.open("", "_blank")}
             >
               Falar com Especialista
-            </button>
+            </button>*/}
           </div>
         </div>
       </div>
