@@ -72,17 +72,11 @@ export default function Footer() {
 
           <ul className="text-sm text-gray-300 space-y-2">
             <li>
-              <a href="tel:+351965710640" className="hover:text-white">
-                +351 965 710 640
-              </a>
-            </li>
-
-            <li>
               <a
-                href="mailto:jorgemiguel26@sapo.pt"
+                href="mailto:intermediario@jorgemendonca.com"
                 className="hover:text-white"
               >
-                jorgemiguel26@sapo.pt
+                intermediario@jorgemendonca.com
               </a>
             </li>
 
@@ -108,7 +102,6 @@ export default function Footer() {
           <strong className="text-[#c5a059]">
             Jorge Miguel Mendonça, Unipessoal Lda.
           </strong>{" "}
-          – NIF: [A definir].
         </p>
 
         <p>

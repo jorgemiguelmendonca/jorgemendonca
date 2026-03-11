@@ -71,13 +71,13 @@ jorge miguel mendonça crédito
 
         <meta property="og:type" content="website" />
 
-        <meta property="og:url" content="https://intermedcredit.vercel.app/" />
+        <meta property="og:url" content="https://jorgemendonca.com/" />
 
         <meta
           property="og:image"
-          content="https://intermedcredit.vercel.app/logo-meta.png"
+          content="https://jorgemendonca.com/logo-meta.png"
         />
-        <link rel="canonical" href="https://intermedcredit.vercel.app/" />
+        <link rel="canonical" href="https://jorgemendonca.com/" />
         <link rel="shortcut icon" href="/logo-meta.png" type="image/x-icon" />
       </head>
       <body
@@ -95,8 +95,8 @@ jorge miguel mendonça crédito
               "@context": "https://schema.org",
               "@type": "FinancialService",
               name: "Jorge Miguel Mendonça - Intermediação de Crédito",
-              url: "https://intermedcredit.vercel.app",
-              telephone: "+351965710640",
+              url: "https://jorgemendonca.com",
+              telephone: "",
               email: "jorgemiguel26@sapo.pt",
               address: {
                 "@type": "PostalAddress",

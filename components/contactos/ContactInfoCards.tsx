@@ -1,6 +1,6 @@
 "use client";
 
-import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { Mail, MapPin, Clock } from "lucide-react";
 
 export default function Contactos() {
   return (
@@ -16,22 +16,6 @@ export default function Contactos() {
             </h2>
 
             <div className="space-y-6">
-              {/* TELEFONE */}
-              <a
-                href="https://wa.me/351965710640"
-                target="_blank"
-                className="flex items-start gap-4 p-4 rounded-xl hover:bg-gray-100 transition cursor-pointer"
-              >
-                <div className="bg-[#1A2B4C] text-[#C5A059] p-3 rounded-lg">
-                  <Phone size={20} />
-                </div>
-
-                <div>
-                  <p className="font-semibold text-[#1A2B4C]">Telefone</p>
-                  <p className="text-gray-600">+351 965 710 640</p>
-                </div>
-              </a>
-
               {/* EMAIL */}
               <a
                 href="mailto:jorgemiguel26@sapo.pt"
@@ -43,7 +27,9 @@ export default function Contactos() {
 
                 <div>
                   <p className="font-semibold text-[#1A2B4C]">Email</p>
-                  <p className="text-gray-600">jorgemiguel26@sapo.pt</p>
+                  <p className="text-gray-600">
+                    intermediario@jorgemendonca.com
+                  </p>
                 </div>
               </a>
 
