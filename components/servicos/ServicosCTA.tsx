@@ -64,11 +64,11 @@ export default function ServicosCTA() {
         {/* TEXTO */}
         <div className="text-white">
           <h2 className="text-4xl font-bold mb-6">
-            Faça agora sua pré-análise de crédito
+            Aproveite as soluções de crédito entre €30.000 a €20.000.000
           </h2>
 
           <p className="text-lg text-white mb-8">
-            Descubra rapidamente quanto você pode conseguir de crédito.
+            Preencha o formulário e receba sua cotação hoje mesmo
           </p>
 
           <div className="flex flex-col gap-2 text-white text-sm">
@@ -81,7 +81,7 @@ export default function ServicosCTA() {
         {/* FORM */}
         <div className="bg-white p-8 rounded-2xl shadow-xl">
           <h3 className="text-2xl font-semibold text-[#1A2B4C]">
-            Simule o seu Crédito
+            Faça solicitação de crédito hoje mesmo
           </h3>
 
           <p className="text-gray-500 mb-6">
