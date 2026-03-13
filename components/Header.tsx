@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import Image from "next/image";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -21,7 +20,7 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300
+        className={`fixed border-b-2 top-0 left-0 w-full z-50 transition-all duration-300
         ${scrolled ? "bg-white shadow-md border-b border-gray-200" : "bg-white/90 backdrop-blur"}
         `}
       >

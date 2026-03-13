@@ -63,8 +63,8 @@ export default function ServicosCTA() {
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-baseline">
         {/* TEXTO */}
         <div className="text-white">
-          <h2 className="text-4xl font-bold mb-6">
-            Faça agora sua pré-análise de crédito
+          <h2 className="text-4xl font-bold mb-6 text-[#c5a059]">
+            Aproveite as soluções de crédito entre 30.000€ e 23.000.000€
           </h2>
 
           <p className="text-lg text-white mb-8">

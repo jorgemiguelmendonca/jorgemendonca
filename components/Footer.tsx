@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer className="bg-[#1A2B4C] text-white">
-      <div className="max-w-[1200px] m-auto px-6 py-14 grid md:grid-cols-3 gap-10">
+      <div className="max-w-300 m-auto px-6 py-14 grid md:grid-cols-3 gap-10">
         {/* EMPRESA */}
 
         <div>
@@ -23,45 +23,7 @@ export default function Footer() {
           </p>
         </div>
 
-        {/* NAVEGAÇÃO */}
-
-        <div>
-          <h4 className="font-semibold mb-4 text-[#c5a059] uppercase">
-            Navegação
-          </h4>
-
-          <ul className="space-y-2 text-gray-300 text-sm">
-            <li>
-              <Link href="/" className="hover:text-white">
-                Início
-              </Link>
-            </li>
-
-            <li>
-              <Link href="/servicos" className="hover:text-white">
-                Serviços
-              </Link>
-            </li>
-
-            <li>
-              <Link href="/sobre" className="hover:text-white">
-                Sobre Nós
-              </Link>
-            </li>
-
-            <li>
-              <Link href="/contactos" className="hover:text-white">
-                Contactos
-              </Link>
-            </li>
-
-            <li>
-              <Link href="/simulacao" className="hover:text-white">
-                Simulação
-              </Link>
-            </li>
-          </ul>
-        </div>
+        {/* CONTACTOS */}
 
         {/* CONTACTOS */}
 
@@ -89,41 +51,36 @@ export default function Footer() {
             </li>
           </ul>
         </div>
+
+        <div>
+          <h4 className="font-semibold mb-4 text-[#c5a059] uppercase">
+            Informação Legal
+          </h4>
+
+          <ul className="text-sm text-gray-300 space-y-2">
+            <li>
+              <span className="font-bold text-[#c5a059]">Mutuantes:</span>{" "}
+              Cofidis; Bicredit
+            </li>
+
+            <li className="pt-2">
+              <span className="font-bold text-[#c5a059]">Seguro RC:</span>{" "}
+              Hiscox S.A. (Apólice 2522203)
+            </li>
+            <li className="pt-2">
+              Isento de receção de valores de clientes conforme o Art.º 46.º do
+              RJIC
+            </li>
+          </ul>
+        </div>
       </div>
 
       {/* LINHA */}
 
-      <div className="border-t border-blue-800"></div>
+      <div className="border-t border-[#c5a059] mb-10"></div>
 
       {/* INFORMAÇÃO LEGAL */}
 
-      <div className="max-w-[1200px] m-auto px-6 py-8 text-xs text-gray-300 leading-relaxed space-y-2">
-        <p>
-          <strong className="text-[#c5a059]">
-            Jorge Miguel Mendonça, Unipessoal Lda.
-          </strong>{" "}
-        </p>
-
-        <p>
-          Mutuantes vinculados:{" "}
-          <strong className="text-[#c5a059]">Cofidis</strong> e{" "}
-          <strong className="text-[#c5a059]">
-            Bicredit – Sociedade Financeira de Crédito, S.A.
-          </strong>
-        </p>
-
-        <p>
-          Seguro de Responsabilidade Civil Profissional contratado junto da{" "}
-          <strong className="text-[#c5a059]">Hiscox S.A.</strong> – Apólice n.º{" "}
-          <strong className="text-[#c5a059]">2522203</strong>.
-        </p>
-
-        <p>
-          O intermediário de crédito está isento de receção ou entrega de
-          quaisquer valores de clientes, conforme o Art.º 46.º do Regime
-          Jurídico dos Intermediários de Crédito (RJIC).
-        </p>
-      </div>
       <div className="flex gap-4 text-sm text-gray-400 items-center justify-center mb-4">
         <Link href="/politica-privacidade" className="hover:text-amber-200">
           Política de Privacidade
