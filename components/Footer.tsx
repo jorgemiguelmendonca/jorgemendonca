@@ -41,14 +41,6 @@ export default function Footer() {
                 intermediario@jorgemendonca.com
               </a>
             </li>
-
-            <li className="pt-2">
-              Lugar Pontinha, s/n
-              <br />
-              9875-116 Topo, Calheta
-              <br />
-              Ilha de São Jorge, Açores
-            </li>
           </ul>
         </div>
 

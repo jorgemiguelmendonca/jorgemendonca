@@ -1,11 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function NewHero() {
-  const router = useRouter();
-
   const [creditType, setCreditType] = useState("Habitação");
   const [amount, setAmount] = useState("");
   const [income, setIncome] = useState("");
@@ -70,12 +68,13 @@ export default function NewHero() {
           </p>
 
           <div className="flex gap-4 mt-8">
-            <button
+            <Link
               className="bg-[#C5A059] hover:bg-[#b08f4d] text-white font-semibold px-8 py-4 rounded-lg transition cursor-pointer"
-              onClick={() => router.push("/simulacao")}
+              href="https://wa.me/553135828296"
+              target="_blank"
             >
               Pedir Simulação
-            </button>
+            </Link>
           </div>
         </div>
       </div>
