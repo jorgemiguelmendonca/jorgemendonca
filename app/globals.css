@@ -32,3 +32,8 @@ body {
 .heroMaster {
   background-image: url(/my-app/public/hero.png);
 }
+html,
+body {
+  overflow-x: hidden;
+  width: 100%;
+}

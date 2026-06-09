@@ -1,26 +1,37 @@
 "use client";
 
-import { Mail, MapPin, Clock } from "lucide-react";
+import { Mail, Clock } from "lucide-react";
 import Image from "next/image";
 
 export default function Contactos() {
   return (
-    <section className="py-24 px-6 bg-gray-50">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10">
+    <section className="py-24 px-1 md:px-6 bg-gray-50 overflow-hidden">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 px-4">
         {/* COLUNA ESQUERDA */}
 
         <div className="space-y-8">
           {/* INFO CONTACTO */}
-          <div className="bg-white p-8 rounded-2xl shadow-sm border">
+          <div
+            className="
+bg-white
+rounded-3xl
+shadow-xl
+p-3
+md:p-8
+w-full
+max-w-full
+overflow-hidden
+"
+          >
             <h2 className="text-2xl font-bold text-[#1A2B4C] mb-6">
               Informações de Contacto
             </h2>
 
-            <div className="space-y-6">
+            <div className="space-y-4">
               {/* EMAIL */}
               <a
                 href="mailto:jorgemiguel26@sapo.pt"
-                className="flex items-start gap-4 p-4 rounded-xl hover:bg-gray-100 transition cursor-pointer"
+                className="flex items-start gap-4 p-1 rounded-xl hover:bg-gray-100 transition cursor-pointer"
               >
                 <div className="bg-[#1A2B4C] text-[#C5A059] p-3 rounded-lg">
                   <Mail size={20} />
@@ -28,7 +39,7 @@ export default function Contactos() {
 
                 <div>
                   <p className="font-semibold text-[#1A2B4C]">Email</p>
-                  <p className="text-gray-600">
+                  <p className="text-gray-600 text-[1rem]">
                     intermediario@jorgemendonca.com
                   </p>
                 </div>
@@ -37,7 +48,7 @@ export default function Contactos() {
               <a
                 href="https://wa.me/351965710640?text=Olá,%20gostaria%20de%20marcar%20um%20atendimento."
                 target="_blank"
-                className="flex items-start gap-4 p-4 rounded-xl hover:bg-gray-100 transition cursor-pointer"
+                className="flex items-start gap-4 p-1 rounded-xl hover:bg-gray-100 transition cursor-pointer"
               >
                 <div className="bg-[#1A2B4C] text-[#C5A059] p-3 rounded-lg">
                   <Clock size={20} />
