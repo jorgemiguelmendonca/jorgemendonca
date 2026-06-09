@@ -1,6 +1,7 @@
 "use client";
 
 import { Mail, MapPin, Clock } from "lucide-react";
+import Image from "next/image";
 
 export default function Contactos() {
   return (
@@ -29,28 +30,6 @@ export default function Contactos() {
                   <p className="font-semibold text-[#1A2B4C]">Email</p>
                   <p className="text-gray-600">
                     intermediario@jorgemendonca.com
-                  </p>
-                </div>
-              </a>
-
-              {/* MORADA */}
-              <a
-                href="https://www.google.com/maps/search/?api=1&query=Lugar+Pontinha+9875-116+Topo+Calheta+Ilha+de+São+Jorge+Açores"
-                target="_blank"
-                className="flex items-start gap-4 p-4 rounded-xl hover:bg-gray-100 transition cursor-pointer"
-              >
-                <div className="bg-[#1A2B4C] text-[#C5A059] p-3 rounded-lg">
-                  <MapPin size={20} />
-                </div>
-
-                <div>
-                  <p className="font-semibold text-[#1A2B4C]">Morada</p>
-                  <p className="text-gray-600">
-                    Lugar Pontinha, s/n
-                    <br />
-                    9875-116 Topo, Calheta
-                    <br />
-                    Ilha de São Jorge, Açores
                   </p>
                 </div>
               </a>
@@ -103,17 +82,8 @@ export default function Contactos() {
           {/* MAPA */}
 
           <div className="bg-white p-6 rounded-2xl shadow-sm border">
-            <h2 className="text-xl font-semibold text-[#1A2B4C] mb-4">
-              Localização
-            </h2>
-
             <div className="rounded-xl overflow-hidden">
-              <iframe
-                src="https://maps.google.com/maps?q=Topo%20Calheta%20Sao%20Jorge%20Azores&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                width="100%"
-                height="250"
-                loading="lazy"
-              ></iframe>
+              <Image src="/logo.png" width={500} height={200} alt="" />
             </div>
           </div>
 

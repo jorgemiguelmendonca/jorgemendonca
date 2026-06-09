@@ -12,7 +12,7 @@ export default function ServicosCTA() {
   });
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     setForm({
       ...form,
@@ -89,6 +89,9 @@ export default function ServicosCTA() {
           </p>
 
           {/* NOME */}
+          <label htmlFor="nome" className="text-[#1A2B4C]">
+            Insira seu nome
+          </label>
           <input
             type="text"
             name="nome"
@@ -99,16 +102,22 @@ export default function ServicosCTA() {
           />
 
           {/* WHATSAPP */}
+          <label htmlFor="nome" className="text-[#1A2B4C]">
+            Insira seu WhatsApp
+          </label>
           <input
             type="text"
             name="whatsapp"
-            placeholder="Seu WhatsApp"
+            placeholder="+351 XX XXX-XXXX"
             value={form.whatsapp}
             onChange={handleChange}
             className="w-full mb-4 border border-[#1A2B4C] rounded-lg p-3 text-[#1A2B4C]"
           />
 
           {/* TIPO */}
+          <label htmlFor="nome" className="text-[#1A2B4C]">
+            Objetivo de cŕedito
+          </label>
           <select
             name="tipo"
             value={form.tipo}
@@ -121,6 +130,9 @@ export default function ServicosCTA() {
           </select>
 
           {/* VALOR */}
+          <label htmlFor="nome" className="text-[#1A2B4C]">
+            Valor pretendido
+          </label>
           <input
             type="number"
             name="valor"
@@ -131,6 +143,9 @@ export default function ServicosCTA() {
           />
 
           {/* RENDA */}
+          <label htmlFor="nome" className="text-[#1A2B4C]">
+            Rendimento mensal
+          </label>
           <input
             type="number"
             name="renda"
