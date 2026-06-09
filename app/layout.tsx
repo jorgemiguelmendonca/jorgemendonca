@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+
 import { GoogleTagManager } from '@next/third-parties/google'
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -125,7 +126,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
    
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PMK23MLG"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+<GoogleTagManager gtmId="GTM-PMK23MLG" />
       </body>
     </html>
   );
