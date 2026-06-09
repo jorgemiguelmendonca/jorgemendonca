@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 
-import { GoogleTagManager } from '@next/third-parties/google'
+import { GoogleTagManager } from "@next/third-parties/google";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
@@ -82,18 +82,13 @@ jorge miguel mendonça crédito
         />
         <link rel="canonical" href="https://jorgemendonca.com/" />
         <link rel="shortcut icon" href="/logo-meta.png" type="image/x-icon" />
-
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-PMK23MLG');</script>
-
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <GoogleTagManager gtmId="GTM-PMK23MLG" />
         <Header />
+
         {children}
         <Footer />
 
@@ -123,10 +118,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             }),
           }}
         />
-   
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PMK23MLG"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<GoogleTagManager gtmId="GTM-PMK23MLG" />
       </body>
     </html>
   );
