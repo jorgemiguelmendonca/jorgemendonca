@@ -107,49 +107,6 @@ export async function POST(req: Request) {
 
   <hr/>
 
-  <h3 style="color:#c5a059;">Dados da Simulação</h3>
-
-  <table style="width:100%;border-collapse:collapse">
-
-  <tr>
-  <td style="padding:8px;border:1px solid #ddd;"><b>Tipo de Crédito</b></td>
-  <td style="padding:8px;border:1px solid #ddd;">${data?.creditType || "-"}</td>
-  </tr>
-
-  <tr>
-  <td style="padding:8px;border:1px solid #ddd;"><b>Valor a Financiar</b></td>
-  <td style="padding:8px;border:1px solid #ddd;">${data?.amount || "-"}</td>
-  </tr>
-
-  <tr>
-  <td style="padding:8px;border:1px solid #ddd;"><b>Situação Profissional</b></td>
-  <td style="padding:8px;border:1px solid #ddd;">${data?.employment || "-"}</td>
-  </tr>
-
-  <tr>
-  <td style="padding:8px;border:1px solid #ddd;"><b>Rendimento Mensal</b></td>
-  <td style="padding:8px;border:1px solid #ddd;">${data?.income || "-"}</td>
-  </tr>
-
-  <tr>
-  <td style="padding:8px;border:1px solid #ddd;"><b>Capitais Próprios</b></td>
-  <td style="padding:8px;border:1px solid #ddd;">${data?.ownCapital || "-"}</td>
-  </tr>
-
-  <tr>
-  <td style="padding:8px;border:1px solid #ddd;"><b>Localização do Imóvel</b></td>
-  <td style="padding:8px;border:1px solid #ddd;">${data?.propertyLocation || "-"}</td>
-  </tr>
-
-  <tr>
-  <td style="padding:8px;border:1px solid #ddd;"><b>Quando pretende avançar</b></td>
-  <td style="padding:8px;border:1px solid #ddd;">${data?.timeline || "-"}</td>
-  </tr>
-
-  </table>
-
-  <br/>
-
   <h3 style="color:#c5a059;">Dados de Contacto</h3>
 
   <table style="width:100%;border-collapse:collapse">
@@ -170,6 +127,33 @@ export async function POST(req: Request) {
   </tr>
 
   </table>
+
+  <h3 style="color:#c5a059;">Dados da Simulação</h3>
+
+  <table style="width:100%;border-collapse:collapse">
+
+  <tr>
+  <td style="padding:8px;border:1px solid #ddd;"><b>Tipo de Crédito</b></td>
+  <td style="padding:8px;border:1px solid #ddd;">${data?.creditType || "-"}</td>
+  </tr>
+
+  <tr>
+  <td style="padding:8px;border:1px solid #ddd;"><b>Valor a Financiar</b></td>
+  <td style="padding:8px;border:1px solid #ddd;">${data?.amount || "-"}</td>
+  </tr>
+
+ 
+
+  <tr>
+  <td style="padding:8px;border:1px solid #ddd;"><b>Rendimento Mensal</b></td>
+  <td style="padding:8px;border:1px solid #ddd;">${data?.income || "-"}</td>
+  </tr>
+
+  </table>
+
+  <br/>
+
+  
 
   </div>
   `;
