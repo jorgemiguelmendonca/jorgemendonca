@@ -1,11 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 export default function ServicosCTA() {
+  const router = useRouter();
   const [form, setForm] = useState({
     nome: "",
-    whatsapp: "",
+    whatsapp: "+351 ",
     email: "",
     tipo: "Crédito Pessoal",
     valor: "",
@@ -15,15 +17,59 @@ export default function ServicosCTA() {
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
+    const { name, value } = e.target;
+
+    if (name === "whatsapp") {
+      let numbers = value.replace(/\D/g, "");
+
+      if (numbers.startsWith("351")) {
+        numbers = numbers.slice(3);
+      }
+
+      numbers = numbers.slice(0, 9);
+
+      let formatted = "+351";
+
+      if (numbers.length > 0) {
+        formatted += ` ${numbers.slice(0, 3)}`;
+      }
+
+      if (numbers.length > 3) {
+        formatted += ` ${numbers.slice(3, 6)}`;
+      }
+
+      if (numbers.length > 6) {
+        formatted += ` ${numbers.slice(6, 9)}`;
+      }
+
+      setForm(prev => ({
+        ...prev,
+        whatsapp: formatted,
+      }));
+
+      return;
+    }
+
+    if (name === "valor" || name === "renda") {
+      const numeric = value.replace(/\D/g, "");
+
+      setForm(prev => ({
+        ...prev,
+        [name]: numeric,
+      }));
+
+      return;
+    }
+
+    setForm(prev => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
   const enviarEmail = async () => {
-    if (!form.nome || !form.whatsapp || !form.valor) {
-      alert("Preencha os campos obrigatórios.");
+    if (!form.nome || !form.email || !form.whatsapp || !form.valor) {
+      alert("Preencha todos os campos obrigatórios.");
       return;
     }
 
@@ -42,13 +88,13 @@ export default function ServicosCTA() {
       const data = await res.json();
 
       if (data.success) {
-        alert("Pedido enviado com sucesso!");
+        router.push("/obrigado-contacto");
 
         setForm({
           nome: "",
           email: "",
-          whatsapp: "",
-          tipo: "Cŕedito Pessoal",
+          whatsapp: "+351 ",
+          tipo: "Crédito Pessoal",
           valor: "",
           renda: "",
         });
@@ -145,10 +191,10 @@ export default function ServicosCTA() {
             Valor pretendido
           </label>
           <input
-            type="number"
+            type="text"
             name="valor"
-            placeholder="Minimo 30.0000€"
-            value={form.valor}
+            placeholder="30.000 €"
+            value={form.valor ? Number(form.valor).toLocaleString("pt-PT") : ""}
             onChange={handleChange}
             className="w-full mb-4 border border-[#1A2B4C] rounded-lg p-3 text-[#1A2B4C]"
           />

@@ -1,18 +1,16 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Simulacao() {
+  const router = useRouter();
   const [step, setStep] = useState(1);
 
   const [form, setForm] = useState({
     creditType: "",
     amount: "",
-    employment: "",
     income: "",
-    ownCapital: "",
-    propertyLocation: "",
-    timeline: "",
     name: "",
     phone: "",
     email: "",
@@ -30,7 +28,7 @@ export default function Simulacao() {
     setStep(prev => prev - 1);
   }
 
-  const progress = (step / 7) * 100;
+  const progress = (step / 6) * 100;
 
   const sendSimulation = async () => {
     if (!canProceed()) return;
@@ -50,16 +48,12 @@ export default function Simulacao() {
       const data = await res.json();
 
       if (data.success) {
-        alert("Simulação enviada com sucesso!");
+        router.push("/obrigado-simulacao");
 
         setForm({
           creditType: "",
           amount: "",
-          employment: "",
           income: "",
-          ownCapital: "",
-          propertyLocation: "",
-          timeline: "",
           name: "",
           phone: "",
           email: "",
@@ -74,15 +68,14 @@ export default function Simulacao() {
     }
   };
   const canProceed = () => {
-    if (step === 1) return form.creditType !== "";
-    if (step === 2) return form.amount !== "";
-    if (step === 3) return form.employment !== "";
-    if (step === 4) return form.income !== "";
-    if (step === 5) return form.ownCapital !== "";
-    if (step === 6) return form.propertyLocation !== "";
-    if (step === 7) return form.timeline !== "";
+    if (step === 1) return form.name !== "";
+    if (step === 2) return form.email !== "";
+    if (step === 3) return form.phone !== "";
+    if (step === 4) return form.creditType !== "";
+    if (step === 5) return form.amount !== "";
+    if (step === 6) return form.income !== "";
 
-    return true;
+    return false;
   };
   const optionStyle = (selected: boolean) =>
     `border p-4 rounded-lg text-left text-[#1A2B4C] flex justify-between items-center cursor-pointer transition
@@ -116,7 +109,7 @@ export default function Simulacao() {
       <div className="w-full max-w-xl bg-white rounded-2xl shadow-xl p-8">
         {/* Progress */}
         <div className="mb-8">
-          <p className="text-sm text-gray-500 mb-2">Passo {step} de 7</p>
+          <p className="text-sm text-gray-500 mb-2">Passo {step} de 6</p>
 
           <div className="w-full bg-gray-200 rounded-full h-2">
             <div
@@ -130,16 +123,102 @@ export default function Simulacao() {
         {step === 1 && (
           <div>
             <h2 className="text-2xl font-semibold mb-6 text-[#c5a059]">
+              Qual é o seu nome?
+            </h2>
+
+            <input
+              placeholder="Nome completo"
+              className="w-full border p-3 rounded-lg text-[#1A2B4C]"
+              onChange={e => updateField("name", e.target.value)}
+            />
+
+            <div className="flex justify-between mt-6">
+              <button onClick={back} className="text-gray-500 cursor-pointer">
+                Voltar
+              </button>
+
+              <button
+                onClick={next}
+                disabled={!form.name}
+                className={`px-6 py-2 rounded-lg text-white ${
+                  form.name
+                    ? "bg-[#1A2B4C] cursor-pointer"
+                    : "bg-gray-300 cursor-not-allowed"
+                }`}
+              >
+                Próximo
+              </button>
+            </div>
+          </div>
+        )}
+        {/* STEP 2 */}
+        {step === 2 && (
+          <div>
+            <h2 className="text-2xl font-semibold mb-6 text-[#c5a059]">
+              Qual é o seu email?
+            </h2>
+
+            <input
+              placeholder="Email"
+              className="w-full border p-3 rounded-lg text-[#1A2B4C]"
+              onChange={e => updateField("email", e.target.value)}
+            />
+
+            <div className="flex justify-between mt-6">
+              <button onClick={back} className="text-gray-500">
+                Voltar
+              </button>
+
+              <button
+                onClick={next}
+                className="px-6 py-2 rounded-lg text-white bg-[#C5A059]"
+              >
+                Próximo
+              </button>
+            </div>
+          </div>
+        )}
+        {/* STEP 3 */}
+        {step === 3 && (
+          <div>
+            <h2 className="text-2xl font-semibold mb-6 text-[#c5a059]">
+              Qual é o seu telefone?
+            </h2>
+
+            <input
+              placeholder="Telefone"
+              className="w-full border p-3 rounded-lg text-[#1A2B4C]"
+              onChange={e => updateField("phone", e.target.value)}
+            />
+
+            <div className="flex justify-between mt-6">
+              <button onClick={back} className="text-gray-500 cursor-pointer">
+                Voltar
+              </button>
+
+              <button
+                onClick={next}
+                disabled={!form.phone}
+                className={`px-6 py-2 rounded-lg text-white ${
+                  form.phone
+                    ? "bg-[#1A2B4C] cursor-pointer"
+                    : "bg-gray-300 cursor-not-allowed"
+                }`}
+              >
+                Próximo
+              </button>
+            </div>
+          </div>
+        )}
+        {/* STEP 4 */}
+        {step === 4 && (
+          <div>
+            <h2 className="text-2xl font-semibold mb-6 text-[#c5a059]">
               Qual tipo de crédito pretende?
             </h2>
 
             <div className="flex flex-col gap-3">
-              {[
-                "Crédito Habitação",
-                "Crédito para Construção",
-                "Consolidação de Créditos",
-                "Outro",
-              ].map(type => (
+              {["Crédito Pessoal", "Crédito para Empresas"].map(type => (
                 <button
                   key={type}
                   onClick={() => updateField("creditType", type)}
@@ -178,8 +257,8 @@ export default function Simulacao() {
           </div>
         )}
 
-        {/* STEP 2 */}
-        {step === 2 && (
+        {/* STEP 5 */}
+        {step === 5 && (
           <div>
             <h2 className="text-2xl font-semibold mb-6 text-[#c5a059]">
               Qual valor pretende?
@@ -187,11 +266,11 @@ export default function Simulacao() {
 
             <div className="flex flex-col gap-3">
               {[
-                "Até 50.000€",
-                "50.000€ - 100.000€",
+                "30.000€",
+                "30.000€ - 100.000€",
                 "100.000€ - 250.000€",
                 "250.000€ - 500.000€",
-                "Mais de 500.000€",
+                "Até 23.000.000€",
               ].map(value => (
                 <button
                   key={value}
@@ -229,57 +308,19 @@ export default function Simulacao() {
           </div>
         )}
 
-        {/* STEP 3 */}
-        {step === 3 && (
+        {/* STEP 6 */}
+        {step === 6 && (
           <div>
             <h2 className="text-2xl font-semibold mb-6 text-[#c5a059]">
-              Qual sua situação profissional?
-            </h2>
-
-            <div className="flex flex-col gap-3">
-              {["Conta de Outrem", "Conta Própria", "Reformado", "Outra"].map(
-                job => (
-                  <OptionButton
-                    key={job}
-                    label={job}
-                    value={job}
-                    field="employment"
-                  />
-                )
-              )}
-            </div>
-
-            <div className="flex justify-between mt-6">
-              <button onClick={back} className="text-gray-500">
-                Voltar
-              </button>
-
-              <button
-                onClick={next}
-                disabled={!form.employment}
-                className={`px-6 py-2 rounded-lg text-white
-        ${form.employment ? "bg-[#1A2B4C]" : "bg-gray-300 cursor-not-allowed"}`}
-              >
-                Próximo
-              </button>
-            </div>
-          </div>
-        )}
-
-        {/* STEP 4 */}
-        {step === 4 && (
-          <div>
-            <h2 className="text-2xl font-semibold mb-6 text-[#c5a059]">
-              Qual é o seu rendimento mensal?
+              Prazo desejado
             </h2>
 
             <div className="flex flex-col gap-3">
               {[
-                "Até 1.000€",
-                "1.000€ - 2.000€",
-                "2.000€ - 3.000€",
-                "3.000€ - 5.000€",
-                "Mais de 5.000€",
+                "12 meses",
+                "12 meses - 24 meses",
+                "24 meses - 36 meses",
+                "36 meses - 48 meses",
               ].map(income => (
                 <OptionButton
                   key={income}
@@ -296,104 +337,10 @@ export default function Simulacao() {
               </button>
 
               <button
-                onClick={next}
+                onClick={sendSimulation}
                 disabled={!form.income}
                 className={`px-6 py-2 rounded-lg text-white
         ${form.income ? "bg-[#1A2B4C]" : "bg-gray-300 cursor-not-allowed"}`}
-              >
-                Próximo
-              </button>
-            </div>
-          </div>
-        )}
-
-        {/* STEP 8 */}
-        {step === 5 && (
-          <div>
-            <h2 className="text-2xl font-semibold mb-6 text-[#c5a059]">
-              Qual é o seu nome?
-            </h2>
-
-            <input
-              placeholder="Nome completo"
-              className="w-full border p-3 rounded-lg text-[#1A2B4C]"
-              onChange={e => updateField("name", e.target.value)}
-            />
-
-            <div className="flex justify-between mt-6">
-              <button onClick={back} className="text-gray-500 cursor-pointer">
-                Voltar
-              </button>
-
-              <button
-                onClick={next}
-                disabled={!form.name}
-                className={`px-6 py-2 rounded-lg text-white ${
-                  form.name
-                    ? "bg-[#1A2B4C] cursor-pointer"
-                    : "bg-gray-300 cursor-not-allowed"
-                }`}
-              >
-                Próximo
-              </button>
-            </div>
-          </div>
-        )}
-
-        {/* STEP 9 */}
-        {step === 6 && (
-          <div>
-            <h2 className="text-2xl font-semibold mb-6 text-[#c5a059]">
-              Qual é o seu telefone?
-            </h2>
-
-            <input
-              placeholder="Telefone"
-              className="w-full border p-3 rounded-lg text-[#1A2B4C]"
-              onChange={e => updateField("phone", e.target.value)}
-            />
-
-            <div className="flex justify-between mt-6">
-              <button onClick={back} className="text-gray-500 cursor-pointer">
-                Voltar
-              </button>
-
-              <button
-                onClick={next}
-                disabled={!form.phone}
-                className={`px-6 py-2 rounded-lg text-white ${
-                  form.phone
-                    ? "bg-[#1A2B4C] cursor-pointer"
-                    : "bg-gray-300 cursor-not-allowed"
-                }`}
-              >
-                Próximo
-              </button>
-            </div>
-          </div>
-        )}
-
-        {/* STEP 10 */}
-        {step === 7 && (
-          <div>
-            <h2 className="text-2xl font-semibold mb-6 text-[#c5a059]">
-              Qual é o seu email?
-            </h2>
-
-            <input
-              placeholder="Email"
-              className="w-full border p-3 rounded-lg text-[#1A2B4C]"
-              onChange={e => updateField("email", e.target.value)}
-            />
-
-            <div className="flex justify-between mt-6">
-              <button onClick={back} className="text-gray-500">
-                Voltar
-              </button>
-
-              <button
-                onClick={sendSimulation}
-                className="px-6 py-2 rounded-lg text-white bg-[#C5A059]"
               >
                 Enviar Simulação
               </button>

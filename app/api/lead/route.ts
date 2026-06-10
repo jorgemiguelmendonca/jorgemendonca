@@ -16,14 +16,82 @@ export async function POST(req: Request) {
       subject = "Nova Pré-Análise de Crédito";
 
       html = `
-        <h2>Nova Pré-Análise</h2>
+  <div style="font-family:Arial, sans-serif;max-width:700px;margin:auto">
 
-        <p><b>Nome:</b> ${data?.nome || "-"}</p>
-        <p><b>WhatsApp:</b> ${data?.whatsapp || "-"}</p>
-        <p><b>Tipo de Crédito:</b> ${data?.tipo || "-"}</p>
-        <p><b>Valor Pretendido:</b> €${data?.valor || "-"}</p>
-        <p><b>Rendimento Mensal:</b> €${data?.renda || "-"}</p>
-      `;
+    <h2 style="color:#1A2B4C;">
+      Nova Pré-Análise de Crédito
+    </h2>
+
+    <p>
+      Um novo pedido de pré-análise foi recebido através do website.
+    </p>
+
+    <table
+      style="
+      width:100%;
+      border-collapse:collapse;
+      margin-top:20px;
+      "
+    >
+
+      <tr>
+        <td style="padding:10px;border:1px solid #ddd;">
+          <b>Nome</b>
+        </td>
+        <td style="padding:10px;border:1px solid #ddd;">
+          ${data?.nome || "-"}
+        </td>
+      </tr>
+
+      <tr>
+        <td style="padding:10px;border:1px solid #ddd;">
+          <b>Email</b>
+        </td>
+        <td style="padding:10px;border:1px solid #ddd;">
+          ${data?.email || "-"}
+        </td>
+      </tr>
+
+      <tr>
+        <td style="padding:10px;border:1px solid #ddd;">
+          <b>Telefone</b>
+        </td>
+        <td style="padding:10px;border:1px solid #ddd;">
+          ${data?.whatsapp || "-"}
+        </td>
+      </tr>
+
+      <tr>
+        <td style="padding:10px;border:1px solid #ddd;">
+          <b>Tipo de Crédito</b>
+        </td>
+        <td style="padding:10px;border:1px solid #ddd;">
+          ${data?.tipo || "-"}
+        </td>
+      </tr>
+
+      <tr>
+        <td style="padding:10px;border:1px solid #ddd;">
+          <b>Valor Pretendido</b>
+        </td>
+        <td style="padding:10px;border:1px solid #ddd;">
+          € ${data?.valor || "-"}
+        </td>
+      </tr>
+
+      <tr>
+        <td style="padding:10px;border:1px solid #ddd;">
+          <b>Rendimento Mensal</b>
+        </td>
+        <td style="padding:10px;border:1px solid #ddd;">
+          € ${data?.renda || "-"}
+        </td>
+      </tr>
+
+    </table>
+
+  </div>
+  `;
     }
 
     // =========================
@@ -148,6 +216,7 @@ export async function POST(req: Request) {
       to: "intermediario@jorgemendonca.com",
       subject,
       html,
+      replyTo: data?.email || undefined,
     });
 
     return Response.json({ success: true });
