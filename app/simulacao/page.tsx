@@ -10,9 +10,9 @@ export default function Simulacao() {
   const [form, setForm] = useState({
     creditType: "",
     amount: "",
-    income: "",
+    prazo: "120",
     name: "",
-    phone: "",
+    phone: "+351",
     email: "",
   });
 
@@ -53,7 +53,7 @@ export default function Simulacao() {
         setForm({
           creditType: "",
           amount: "",
-          income: "",
+          prazo: "120",
           name: "",
           phone: "",
           email: "",
@@ -73,7 +73,7 @@ export default function Simulacao() {
     if (step === 3) return form.phone !== "";
     if (step === 4) return form.creditType !== "";
     if (step === 5) return form.amount !== "";
-    if (step === 6) return form.income !== "";
+    if (step === 6) return form.prazo !== "";
 
     return false;
   };
@@ -104,6 +104,18 @@ export default function Simulacao() {
       </button>
     );
   }
+  const valor = Number(form.amount || 30000);
+  const meses = Number(form.prazo || 120);
+
+  const jurosMensal = 0.01 / 12;
+
+  const prestacao =
+    valor > 0
+      ? (
+          (valor * jurosMensal) /
+          (1 - Math.pow(1 + jurosMensal, -meses))
+        ).toFixed(2)
+      : "0";
   return (
     <section className=" bg-[linear-gradient(rgba(10,20,40,0.75),rgba(10,20,40,0.75)),url('/hero.png')] bg-cover bg-center  min-h-screen bg-gray-50 flex items-center justify-center px-6 py-16">
       <div className="w-full max-w-xl bg-white rounded-2xl shadow-xl p-8">
@@ -186,10 +198,40 @@ export default function Simulacao() {
             </h2>
 
             <input
-              placeholder="Telefone"
+              type="tel"
+              value={form.phone}
+              placeholder="+351 912 345 678"
               className="w-full border p-3 rounded-lg text-[#1A2B4C]"
-              onChange={e => updateField("phone", e.target.value)}
+              onChange={e => {
+                let numbers = e.target.value.replace(/\D/g, "");
+
+                if (numbers.startsWith("351")) {
+                  numbers = numbers.slice(3);
+                }
+
+                numbers = numbers.slice(0, 9);
+
+                let formatted = "+351";
+
+                if (numbers.length > 0) {
+                  formatted += ` ${numbers.slice(0, 3)}`;
+                }
+
+                if (numbers.length > 3) {
+                  formatted += ` ${numbers.slice(3, 6)}`;
+                }
+
+                if (numbers.length > 6) {
+                  formatted += ` ${numbers.slice(6, 9)}`;
+                }
+
+                updateField("phone", formatted);
+              }}
             />
+
+            <p className="text-xs text-gray-500 mt-2">
+              Exemplo: +351 912 345 678
+            </p>
 
             <div className="flex justify-between mt-6">
               <button onClick={back} className="text-gray-500 cursor-pointer">
@@ -198,9 +240,9 @@ export default function Simulacao() {
 
               <button
                 onClick={next}
-                disabled={!form.phone}
+                disabled={form.phone.replace(/\D/g, "").length !== 12}
                 className={`px-6 py-2 rounded-lg text-white ${
-                  form.phone
+                  form.phone.replace(/\D/g, "").length === 12
                     ? "bg-[#1A2B4C] cursor-pointer"
                     : "bg-gray-300 cursor-not-allowed"
                 }`}
@@ -264,35 +306,44 @@ export default function Simulacao() {
               Qual valor pretende?
             </h2>
 
-            <div className="flex flex-col gap-3">
-              {[
-                "30.000€",
-                "30.000€ - 100.000€",
-                "100.000€ - 250.000€",
-                "250.000€ - 500.000€",
-                "Até 23.000.000€",
-              ].map(value => (
-                <button
-                  key={value}
-                  onClick={() => updateField("amount", value)}
-                  className={`border p-4 rounded-lg text-left text-[#1A2B4C] flex justify-between items-center cursor-pointer transition
-          ${
-            form.amount === value
-              ? "border-[#C5A059] bg-[#f9f6ef]"
-              : "hover:bg-gray-100"
-          }`}
-                >
-                  {value}
+            <p className="text-sm text-zinc-700 mb-4">
+              Escolha um valor entre 30.000€ e 30.000.000€
+            </p>
 
-                  {form.amount === value && (
-                    <span className="text-[#C5A059] font-bold">✓</span>
-                  )}
-                </button>
-              ))}
+            {/* INPUT MANUAL */}
+            <input
+              type="text"
+              value={
+                form.amount ? Number(form.amount).toLocaleString("pt-PT") : ""
+              }
+              onChange={e => {
+                const numeric = e.target.value.replace(/\D/g, "");
+
+                updateField("amount", numeric);
+              }}
+              placeholder="30.000 €"
+              className="w-full border p-3 rounded-lg text-[#1A2B4C] mb-6"
+            />
+
+            <div className="flex justify-between text-xs text-gray-500 mt-2">
+              <span>30.000€</span>
+              <span>30.000.000€</span>
+            </div>
+
+            {/* RESUMO */}
+            <div className="mt-5 p-4 bg-gray-100 rounded-lg border text-center">
+              <p className="text-[#1A2B4C] font-semibold">Valor Selecionado</p>
+
+              <p className="text-3xl font-bold text-[#c5a059]">
+                {Number(form.amount || 30000).toLocaleString("pt-PT", {
+                  style: "currency",
+                  currency: "EUR",
+                })}
+              </p>
             </div>
 
             <div className="flex justify-between mt-6">
-              <button onClick={back} className="text-gray-500">
+              <button onClick={back} className="text-gray-500 cursor-pointer">
                 Voltar
               </button>
 
@@ -311,32 +362,81 @@ export default function Simulacao() {
         {/* STEP 6 */}
         {step === 6 && (
           <div>
-            <h2 className="text-2xl font-semibold  text-[#c5a059]">
-              Prazo desejado
+            <h2 className="text-2xl font-semibold text-[#c5a059]">
+              Escolha o prazo pretendido
             </h2>
-            <p className="text-sm text-zinc-700 mb-6">Taxa de 1% ao ano</p>
 
-            <div className="flex flex-col gap-3">
-              {["Minímo 120 meses", "Até 360 meses"].map(income => (
-                <OptionButton
-                  key={income}
-                  label={income}
-                  value={income}
-                  field="income"
-                />
-              ))}
+            <p className="text-sm text-zinc-700 mb-6">
+              Simulação com taxa de referência de 1% ao ano
+            </p>
+
+            <div className="mb-6">
+              <input
+                type="range"
+                min="120"
+                max="360"
+                step="12"
+                value={form.prazo}
+                onChange={e => updateField("prazo", e.target.value)}
+                className="w-full cursor-pointer accent-[#c5a059]"
+              />
+
+              <div className="flex justify-between text-sm text-gray-500 mt-2">
+                <span>120 meses</span>
+                <span>360 meses</span>
+              </div>
+
+              <div className="mt-4 p-4 bg-gray-100 rounded-lg border text-center">
+                <p className="text-[#1A2B4C] font-semibold">
+                  Prazo Selecionado
+                </p>
+
+                <p className="text-3xl font-bold text-[#c5a059]">
+                  {form.prazo} meses
+                </p>
+
+                <p className="text-gray-600">
+                  ({Number(form.prazo) / 12} anos)
+                </p>
+
+                <hr className="my-4" />
+
+                <p className="text-[#1A2B4C] font-semibold">Valor Financiado</p>
+
+                <p className="text-xl font-bold text-[#1A2B4C]">
+                  {valor.toLocaleString("pt-PT", {
+                    style: "currency",
+                    currency: "EUR",
+                  })}
+                </p>
+
+                <hr className="my-4" />
+
+                <p className="text-[#1A2B4C] font-semibold">
+                  Prestação Estimada
+                </p>
+
+                <p className="text-3xl font-bold text-green-600">
+                  {Number(prestacao).toLocaleString("pt-PT", {
+                    style: "currency",
+                    currency: "EUR",
+                  })}
+                </p>
+
+                <p className="text-sm text-gray-500 mt-2">
+                  Simulação indicativa com taxa de referência de 1% ao ano.
+                </p>
+              </div>
             </div>
 
             <div className="flex justify-between mt-6">
-              <button onClick={back} className="text-gray-500">
+              <button onClick={back} className="text-gray-500 cursor-pointer">
                 Voltar
               </button>
 
               <button
                 onClick={sendSimulation}
-                disabled={!form.income}
-                className={`px-6 py-2 rounded-lg text-white
-        ${form.income ? "bg-[#1A2B4C]" : "bg-gray-300 cursor-not-allowed"}`}
+                className="px-6 py-2 rounded-lg bg-[#1A2B4C] text-white cursor-pointer"
               >
                 Enviar Simulação
               </button>

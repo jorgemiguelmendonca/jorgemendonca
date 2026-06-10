@@ -16,23 +16,15 @@ export async function POST(req: Request) {
       subject = "Nova Pré-Análise de Crédito";
 
       html = `
-  <div style="font-family:Arial, sans-serif;max-width:700px;margin:auto">
+  <div style="font-family:Arial;max-width:700px;margin:auto">
 
     <h2 style="color:#1A2B4C;">
       Nova Pré-Análise de Crédito
     </h2>
 
-    <p>
-      Um novo pedido de pré-análise foi recebido através do website.
-    </p>
+    <hr/>
 
-    <table
-      style="
-      width:100%;
-      border-collapse:collapse;
-      margin-top:20px;
-      "
-    >
+    <table style="width:100%;border-collapse:collapse">
 
       <tr>
         <td style="padding:10px;border:1px solid #ddd;">
@@ -54,7 +46,7 @@ export async function POST(req: Request) {
 
       <tr>
         <td style="padding:10px;border:1px solid #ddd;">
-          <b>Telefone</b>
+          <b>WhatsApp</b>
         </td>
         <td style="padding:10px;border:1px solid #ddd;">
           ${data?.whatsapp || "-"}
@@ -75,16 +67,25 @@ export async function POST(req: Request) {
           <b>Valor Pretendido</b>
         </td>
         <td style="padding:10px;border:1px solid #ddd;">
-          € ${data?.valor || "-"}
+          € ${Number(data?.valor || 0).toLocaleString("pt-PT")}
         </td>
       </tr>
 
       <tr>
         <td style="padding:10px;border:1px solid #ddd;">
-          <b>Rendimento Mensal</b>
+          <b>Prazo</b>
         </td>
         <td style="padding:10px;border:1px solid #ddd;">
-          € ${data?.renda || "-"}
+          ${data?.prazo || 120} meses
+        </td>
+      </tr>
+
+      <tr>
+        <td style="padding:10px;border:1px solid #ddd;">
+          <b>Prestação Estimada</b>
+        </td>
+        <td style="padding:10px;border:1px solid #ddd;color:green;font-weight:bold;">
+          € ${Number(data?.prestacao || 0).toLocaleString("pt-PT")}
         </td>
       </tr>
 
@@ -93,7 +94,6 @@ export async function POST(req: Request) {
   </div>
   `;
     }
-
     // =========================
     // SIMULAÇÃO (CORRIGIDO)
     // =========================
@@ -145,8 +145,8 @@ export async function POST(req: Request) {
  
 
   <tr>
-  <td style="padding:8px;border:1px solid #ddd;"><b>Rendimento Mensal</b></td>
-  <td style="padding:8px;border:1px solid #ddd;">${data?.income || "-"}</td>
+  <td style="padding:8px;border:1px solid #ddd;"><b>Prazo de Pagamento</b></td>
+  <td style="padding:8px;border:1px solid #ddd;">${data?.prazo || "-"} meses</td>
   </tr>
 
   </table>
@@ -170,7 +170,7 @@ export async function POST(req: Request) {
 
         <p><b>Tipo de Crédito:</b> ${data?.creditType || "-"}</p>
         <p><b>Valor Pretendido:</b> €${data?.amount || "-"}</p>
-        <p><b>Rendimento Mensal:</b> €${data?.income || "-"}</p>
+        <p><b>Prazo de Pagamento:</b> €${data?.prazo || "-"} meses</p>
       `;
     }
 

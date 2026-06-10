@@ -10,8 +10,8 @@ export default function ServicosCTA() {
     whatsapp: "+351 ",
     email: "",
     tipo: "Crédito Pessoal",
-    valor: "",
-    renda: "",
+    valor: "30000",
+    prazo: "120",
   });
 
   const handleChange = (
@@ -66,7 +66,21 @@ export default function ServicosCTA() {
       [name]: value,
     }));
   };
+  const valor = Number(form.valor || 0);
+  const meses = Number(form.prazo || 120);
 
+  const jurosMensal = 0.01 / 12;
+
+  const prestacao =
+    valor > 0
+      ? (
+          (valor * jurosMensal) /
+          (1 - Math.pow(1 + jurosMensal, -meses))
+        ).toFixed(2)
+      : "0";
+  const totalPago = (Number(prestacao) * meses).toFixed(2);
+
+  const jurosTotal = (Number(totalPago) - valor).toFixed(2);
   const enviarEmail = async () => {
     if (!form.nome || !form.email || !form.whatsapp || !form.valor) {
       alert("Preencha todos os campos obrigatórios.");
@@ -81,7 +95,10 @@ export default function ServicosCTA() {
         },
         body: JSON.stringify({
           formType: "pre-analise",
-          data: form,
+          data: {
+            ...form,
+            prestacao,
+          },
         }),
       });
 
@@ -96,7 +113,7 @@ export default function ServicosCTA() {
           whatsapp: "+351 ",
           tipo: "Crédito Pessoal",
           valor: "",
-          renda: "",
+          prazo: "120",
         });
       } else {
         alert("Erro ao enviar pedido.");
@@ -199,18 +216,87 @@ export default function ServicosCTA() {
             className="w-full mb-4 border border-[#1A2B4C] rounded-lg p-3 text-[#1A2B4C]"
           />
 
-          {/* RENDA */}
-          <label htmlFor="nome" className="text-[#1A2B4C]">
-            Rendimento mensal
-          </label>
-          <input
-            type="number"
-            name="renda"
-            placeholder="Rendimento mensal (€)"
-            value={form.renda}
-            onChange={handleChange}
-            className="w-full mb-4 border border-[#1A2B4C] rounded-lg p-3 text-[#1A2B4C]"
-          />
+          {/* PRAZO */}
+          <label className="text-[#1A2B4C]">Prazo de Pagamento</label>
+
+          <div className="mb-6">
+            <input
+              type="range"
+              name="prazo"
+              min={120}
+              max={360}
+              step={12}
+              value={Number(form.prazo)}
+              onChange={handleChange}
+              className="w-full cursor-pointer accent-[#c5a059]"
+            />
+
+            <div className="flex justify-between text-sm text-gray-500 mt-2">
+              <span>120 meses</span>
+              <span>360 meses</span>
+            </div>
+
+            <div className="mt-4 p-4 bg-gray-100 rounded-lg text-center border">
+              <p className="text-[#1A2B4C] font-semibold">Prazo Selecionado</p>
+
+              <p className="text-2xl font-bold text-[#c5a059]">
+                {form.prazo} meses
+              </p>
+
+              <p className="text-gray-600">({Number(form.prazo) / 12} anos)</p>
+
+              <hr className="my-4" />
+
+              <p className="text-[#1A2B4C] font-semibold">Prestação Estimada</p>
+
+              <p className="text-3xl font-bold text-green-600">
+                {Number(prestacao).toLocaleString("pt-PT", {
+                  style: "currency",
+                  currency: "EUR",
+                })}
+                <span className="text-lg text-gray-500"> / mês</span>
+              </p>
+
+              <div className="mt-4 text-sm text-gray-700 space-y-2">
+                <p>
+                  Valor financiado:
+                  <strong>
+                    {" "}
+                    {valor.toLocaleString("pt-PT", {
+                      style: "currency",
+                      currency: "EUR",
+                    })}
+                  </strong>
+                </p>
+
+                <p>
+                  Total estimado pago:
+                  <strong>
+                    {" "}
+                    {Number(totalPago).toLocaleString("pt-PT", {
+                      style: "currency",
+                      currency: "EUR",
+                    })}
+                  </strong>
+                </p>
+
+                <p>
+                  Juros estimados:
+                  <strong>
+                    {" "}
+                    {Number(jurosTotal).toLocaleString("pt-PT", {
+                      style: "currency",
+                      currency: "EUR",
+                    })}
+                  </strong>
+                </p>
+              </div>
+
+              <p className="text-xs text-gray-500 mt-4">
+                Simulação indicativa com taxa de referência de 1% ao ano.
+              </p>
+            </div>
+          </div>
 
           {/* BOTÃO */}
           <button
