@@ -311,17 +311,13 @@ export default function Simulacao() {
         {/* STEP 6 */}
         {step === 6 && (
           <div>
-            <h2 className="text-2xl font-semibold mb-6 text-[#c5a059]">
+            <h2 className="text-2xl font-semibold  text-[#c5a059]">
               Prazo desejado
             </h2>
+            <p className="text-sm text-zinc-700 mb-6">Taxa de 1% ao ano</p>
 
             <div className="flex flex-col gap-3">
-              {[
-                "12 meses",
-                "12 meses - 24 meses",
-                "24 meses - 36 meses",
-                "36 meses - 48 meses",
-              ].map(income => (
+              {["Minímo 120 meses", "Até 360 meses"].map(income => (
                 <OptionButton
                   key={income}
                   label={income}
