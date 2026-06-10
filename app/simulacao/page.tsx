@@ -19,18 +19,18 @@ export default function Simulacao() {
   });
 
   function updateField(field: string, value: string) {
-    setForm((prev) => ({ ...prev, [field]: value }));
+    setForm(prev => ({ ...prev, [field]: value }));
   }
 
   function next() {
-    setStep((prev) => prev + 1);
+    setStep(prev => prev + 1);
   }
 
   function back() {
-    setStep((prev) => prev - 1);
+    setStep(prev => prev - 1);
   }
 
-  const progress = (step / 10) * 100;
+  const progress = (step / 7) * 100;
 
   const sendSimulation = async () => {
     if (!canProceed()) return;
@@ -81,8 +81,7 @@ export default function Simulacao() {
     if (step === 5) return form.ownCapital !== "";
     if (step === 6) return form.propertyLocation !== "";
     if (step === 7) return form.timeline !== "";
-    if (step === 8) return form.name !== "";
-    if (step === 9) return form.phone !== "";
+
     return true;
   };
   const optionStyle = (selected: boolean) =>
@@ -117,7 +116,7 @@ export default function Simulacao() {
       <div className="w-full max-w-xl bg-white rounded-2xl shadow-xl p-8">
         {/* Progress */}
         <div className="mb-8">
-          <p className="text-sm text-gray-500 mb-2">Passo {step} de 10</p>
+          <p className="text-sm text-gray-500 mb-2">Passo {step} de 7</p>
 
           <div className="w-full bg-gray-200 rounded-full h-2">
             <div
@@ -140,7 +139,7 @@ export default function Simulacao() {
                 "Crédito para Construção",
                 "Consolidação de Créditos",
                 "Outro",
-              ].map((type) => (
+              ].map(type => (
                 <button
                   key={type}
                   onClick={() => updateField("creditType", type)}
@@ -193,7 +192,7 @@ export default function Simulacao() {
                 "100.000€ - 250.000€",
                 "250.000€ - 500.000€",
                 "Mais de 500.000€",
-              ].map((value) => (
+              ].map(value => (
                 <button
                   key={value}
                   onClick={() => updateField("amount", value)}
@@ -239,14 +238,14 @@ export default function Simulacao() {
 
             <div className="flex flex-col gap-3">
               {["Conta de Outrem", "Conta Própria", "Reformado", "Outra"].map(
-                (job) => (
+                job => (
                   <OptionButton
                     key={job}
                     label={job}
                     value={job}
                     field="employment"
                   />
-                ),
+                )
               )}
             </div>
 
@@ -281,7 +280,7 @@ export default function Simulacao() {
                 "2.000€ - 3.000€",
                 "3.000€ - 5.000€",
                 "Mais de 5.000€",
-              ].map((income) => (
+              ].map(income => (
                 <OptionButton
                   key={income}
                   label={income}
@@ -308,167 +307,8 @@ export default function Simulacao() {
           </div>
         )}
 
-        {/* STEP 5 */}
-        {step === 5 && (
-          <div>
-            <h2 className="text-2xl font-semibold mb-6 text-[#c5a059]">
-              Possui capitais próprios para entrada?
-            </h2>
-
-            <div className="flex flex-col gap-3">
-              {["Sim", "Não", "Parcialmente"].map((value) => (
-                <OptionButton
-                  key={value}
-                  label={value}
-                  value={value}
-                  field="ownCapital"
-                />
-              ))}
-            </div>
-
-            <div className="flex justify-between mt-6">
-              <button onClick={back} className="text-gray-500">
-                Voltar
-              </button>
-
-              <button
-                onClick={next}
-                disabled={!form.ownCapital}
-                className={`px-6 py-2 rounded-lg text-white
-        ${form.ownCapital ? "bg-[#1A2B4C]" : "bg-gray-300 cursor-not-allowed"}`}
-              >
-                Próximo
-              </button>
-            </div>
-          </div>
-        )}
-
-        {/* STEP 6 */}
-        {step === 6 && (
-          <div>
-            <h2 className="text-2xl font-semibold mb-6 text-[#c5a059]">
-              Localização do imóvel e prazo
-            </h2>
-
-            <div className="flex flex-col gap-4">
-              <select className="w-full p-4 border-2 border-gray-200 rounded-xl focus:border-[#C5A059] focus:outline-none text-lg bg-white text-[#1A2B4C]">
-                <option value="">Selecione uma opção...</option>
-                <option value="Aveiro">Aveiro</option>
-                <option value="Beja">Beja</option>
-                <option value="Braga">Braga</option>
-                <option value="Bragança">Bragança</option>
-                <option value="Castelo Branco">Castelo Branco</option>
-                <option value="Coimbra">Coimbra</option>
-                <option value="Évora">Évora</option>
-                <option value="Faro">Faro</option>
-                <option value="Guarda">Guarda</option>
-                <option value="Leiria">Leiria</option>
-                <option value="Lisboa">Lisboa</option>
-                <option value="Portalegre">Portalegre</option>
-                <option value="Porto">Porto</option>
-                <option value="Santarém">Santarém</option>
-                <option value="Setúbal">Setúbal</option>
-                <option value="Viana do Castelo">Viana do Castelo</option>
-                <option value="Vila Real">Vila Real</option>
-                <option value="Viseu">Viseu</option>
-                <option value="Ilha de São Miguel (Açores)">
-                  Ilha de São Miguel (Açores)
-                </option>
-                <option value="Ilha Terceira (Açores)">
-                  Ilha Terceira (Açores)
-                </option>
-                <option value="Ilha de São Jorge (Açores)">
-                  Ilha de São Jorge (Açores)
-                </option>
-                <option value="Ilha do Pico (Açores)">
-                  Ilha do Pico (Açores)
-                </option>
-                <option value="Ilha do Faial (Açores)">
-                  Ilha do Faial (Açores)
-                </option>
-                <option value="Ilha Graciosa (Açores)">
-                  Ilha Graciosa (Açores)
-                </option>
-                <option value="Ilha de Santa Maria (Açores)">
-                  Ilha de Santa Maria (Açores)
-                </option>
-                <option value="Ilha das Flores (Açores)">
-                  Ilha das Flores (Açores)
-                </option>
-                <option value="Ilha do Corvo (Açores)">
-                  Ilha do Corvo (Açores)
-                </option>
-                <option value="Ilha da Madeira">Ilha da Madeira</option>
-                <option value="Ilha de Porto Santo">Ilha de Porto Santo</option>
-              </select>
-            </div>
-
-            <div className="flex justify-between mt-6">
-              <button onClick={back} className="text-gray-500 cursor-pointer">
-                Voltar
-              </button>
-
-              <button
-                onClick={next}
-                className="px-6 py-2 rounded-lg text-white bg-[#1A2B4C]"
-              >
-                Próximo
-              </button>
-            </div>
-          </div>
-        )}
-        {/* STEP 7 */}
-        {step === 7 && (
-          <div>
-            <h2 className="text-2xl font-semibold mb-6 text-[#c5a059]">
-              Quando pretende avançar com o crédito?
-            </h2>
-
-            <div className="flex flex-col gap-3">
-              {[
-                "Imediatamente",
-                "Nos próximos 30 dias",
-                "Nos próximos 3 meses",
-                "Ainda estou a planear",
-              ].map((value) => (
-                <button
-                  key={value}
-                  onClick={() => updateField("timeline", value)}
-                  className={`border p-4 rounded-lg text-left text-[#1A2B4C] flex justify-between items-center cursor-pointer transition
-          ${
-            form.timeline === value
-              ? "border-[#C5A059] bg-[#f9f6ef]"
-              : "hover:bg-gray-100"
-          }`}
-                >
-                  {value}
-
-                  {form.timeline === value && (
-                    <span className="text-[#C5A059] font-bold">✓</span>
-                  )}
-                </button>
-              ))}
-            </div>
-
-            <div className="flex justify-between mt-6">
-              <button onClick={back} className="text-gray-500">
-                Voltar
-              </button>
-
-              <button
-                onClick={next}
-                disabled={!form.timeline}
-                className={`px-6 py-2 rounded-lg text-white
-        ${form.timeline ? "bg-[#1A2B4C]" : "bg-gray-300 cursor-not-allowed"}`}
-              >
-                Próximo
-              </button>
-            </div>
-          </div>
-        )}
-
         {/* STEP 8 */}
-        {step === 8 && (
+        {step === 5 && (
           <div>
             <h2 className="text-2xl font-semibold mb-6 text-[#c5a059]">
               Qual é o seu nome?
@@ -477,7 +317,7 @@ export default function Simulacao() {
             <input
               placeholder="Nome completo"
               className="w-full border p-3 rounded-lg text-[#1A2B4C]"
-              onChange={(e) => updateField("name", e.target.value)}
+              onChange={e => updateField("name", e.target.value)}
             />
 
             <div className="flex justify-between mt-6">
@@ -501,7 +341,7 @@ export default function Simulacao() {
         )}
 
         {/* STEP 9 */}
-        {step === 9 && (
+        {step === 6 && (
           <div>
             <h2 className="text-2xl font-semibold mb-6 text-[#c5a059]">
               Qual é o seu telefone?
@@ -510,7 +350,7 @@ export default function Simulacao() {
             <input
               placeholder="Telefone"
               className="w-full border p-3 rounded-lg text-[#1A2B4C]"
-              onChange={(e) => updateField("phone", e.target.value)}
+              onChange={e => updateField("phone", e.target.value)}
             />
 
             <div className="flex justify-between mt-6">
@@ -534,7 +374,7 @@ export default function Simulacao() {
         )}
 
         {/* STEP 10 */}
-        {step === 10 && (
+        {step === 7 && (
           <div>
             <h2 className="text-2xl font-semibold mb-6 text-[#c5a059]">
               Qual é o seu email?
@@ -543,7 +383,7 @@ export default function Simulacao() {
             <input
               placeholder="Email"
               className="w-full border p-3 rounded-lg text-[#1A2B4C]"
-              onChange={(e) => updateField("email", e.target.value)}
+              onChange={e => updateField("email", e.target.value)}
             />
 
             <div className="flex justify-between mt-6">

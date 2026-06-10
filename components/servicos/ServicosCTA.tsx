@@ -6,7 +6,8 @@ export default function ServicosCTA() {
   const [form, setForm] = useState({
     nome: "",
     whatsapp: "",
-    tipo: "Habitação",
+    email: "",
+    tipo: "Crédito Pessoal",
     valor: "",
     renda: "",
   });
@@ -45,8 +46,9 @@ export default function ServicosCTA() {
 
         setForm({
           nome: "",
+          email: "",
           whatsapp: "",
-          tipo: "Habitação",
+          tipo: "Cŕedito Pessoal",
           valor: "",
           renda: "",
         });
@@ -68,7 +70,7 @@ export default function ServicosCTA() {
           </h2>
 
           <p className="text-lg text-white mb-8">
-            Preencha o formulário e receba sua cotação hoje mesmo
+            Descubra rapidamente quanto você pode conseguir de crédito.
           </p>
 
           <div className="flex flex-col gap-2 text-white text-sm">
@@ -81,7 +83,7 @@ export default function ServicosCTA() {
         {/* FORM */}
         <div className="bg-white p-8 rounded-2xl shadow-xl">
           <h3 className="text-2xl font-semibold text-[#1A2B4C]">
-            Faça solicitação de crédito hoje mesmo
+            Simule o seu Crédito
           </h3>
 
           <p className="text-gray-500 mb-6">
@@ -100,18 +102,28 @@ export default function ServicosCTA() {
             onChange={handleChange}
             className="w-full mb-4 border border-[#1A2B4C] rounded-lg p-3 text-[#1A2B4C]"
           />
+          <label className="text-[#1A2B4C]">Endereço de Email</label>
 
+          <input
+            type="email"
+            name="email"
+            placeholder="exemplo@email.pt"
+            value={form.email}
+            onChange={handleChange}
+            className="w-full mb-4 border border-[#1A2B4C] rounded-lg p-3 text-[#1A2B4C]"
+          />
           {/* WHATSAPP */}
           <label htmlFor="nome" className="text-[#1A2B4C]">
             Insira seu WhatsApp
           </label>
           <input
-            type="text"
+            type="tel"
             name="whatsapp"
-            placeholder="+351 XX XXX-XXXX"
+            placeholder="+351 912 345 678"
             value={form.whatsapp}
             onChange={handleChange}
             className="w-full mb-4 border border-[#1A2B4C] rounded-lg p-3 text-[#1A2B4C]"
+            pattern="^\+351\s?[0-9]{9}$"
           />
 
           {/* TIPO */}
@@ -124,9 +136,8 @@ export default function ServicosCTA() {
             onChange={handleChange}
             className="w-full mb-4 border border-[#1A2B4C] rounded-lg p-3 text-[#1A2B4C]"
           >
-            <option>Habitação</option>
-            <option>Construção</option>
-            <option>Consolidação de Dívidas</option>
+            <option>Crédito Pessoal</option>
+            <option>Crédito Empresa</option>
           </select>
 
           {/* VALOR */}
@@ -136,7 +147,7 @@ export default function ServicosCTA() {
           <input
             type="number"
             name="valor"
-            placeholder="Valor pretendido (€)"
+            placeholder="Minimo 30.0000€"
             value={form.valor}
             onChange={handleChange}
             className="w-full mb-4 border border-[#1A2B4C] rounded-lg p-3 text-[#1A2B4C]"

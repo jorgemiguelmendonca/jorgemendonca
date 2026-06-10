@@ -75,7 +75,7 @@ export default function Hero() {
           <div className="flex flex-col items-center gap-3 mt-6 text-gray-200">
             <p>✔ Habitação</p>
             <p>✔ Construção</p>
-            <p>✔ Consolidado</p>
+            <p>✔ Empresas</p>
           </div>
 
           <div className="flex gap-4 mt-8">
