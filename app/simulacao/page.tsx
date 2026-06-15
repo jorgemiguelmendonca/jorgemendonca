@@ -32,7 +32,10 @@ export default function Simulacao() {
 
   const sendSimulation = async () => {
     if (!canProceed()) return;
-
+    if (Number(form.amount) < 30000) {
+      alert("O valor mínimo permitido é de 30.000 €.");
+      return;
+    }
     try {
       const res = await fetch("/api/lead", {
         method: "POST",
@@ -55,7 +58,7 @@ export default function Simulacao() {
           amount: "",
           prazo: "120",
           name: "",
-          phone: "",
+          phone: "+351",
           email: "",
         });
 
@@ -72,7 +75,7 @@ export default function Simulacao() {
     if (step === 2) return form.email !== "";
     if (step === 3) return form.phone !== "";
     if (step === 4) return form.creditType !== "";
-    if (step === 5) return form.amount !== "";
+    if (step === 5) return form.amount !== "" && Number(form.amount) >= 30000;
     if (step === 6) return form.prazo !== "";
 
     return false;
@@ -106,6 +109,7 @@ export default function Simulacao() {
   }
   const valor = Number(form.amount || 30000);
   const meses = Number(form.prazo || 120);
+  const valorInvalido = valor > 0 && valor < 30000;
 
   const jurosMensal = 0.01 / 12;
 
@@ -183,7 +187,12 @@ export default function Simulacao() {
 
               <button
                 onClick={next}
-                className="px-6 py-2 rounded-lg text-white bg-[#C5A059]"
+                disabled={!form.email}
+                className={`px-6 py-2 rounded-lg text-white ${
+                  form.email
+                    ? "bg-[#C5A059] cursor-pointer"
+                    : "bg-gray-300 cursor-not-allowed"
+                }`}
               >
                 Próximo
               </button>
@@ -319,11 +328,22 @@ export default function Simulacao() {
               onChange={e => {
                 const numeric = e.target.value.replace(/\D/g, "");
 
+                if (numeric && Number(numeric) < 30000) {
+                  updateField("amount", numeric);
+                  return;
+                }
+
                 updateField("amount", numeric);
               }}
               placeholder="30.000 €"
-              className="w-full border p-3 rounded-lg text-[#1A2B4C] mb-6"
+              className={`w-full border p-3 rounded-lg mb-6 text-[#1A2B4C]
+${valorInvalido ? "border-red-500" : "border-gray-300"}`}
             />
+            {valorInvalido && (
+              <p className="text-red-500 text-sm mt-2">
+                O valor mínimo permitido é de 30.000 €.
+              </p>
+            )}
 
             <div className="flex justify-between text-xs text-gray-500 mt-2">
               <span>30.000€</span>
@@ -349,9 +369,13 @@ export default function Simulacao() {
 
               <button
                 onClick={next}
-                disabled={!form.amount}
+                disabled={!form.amount || valorInvalido}
                 className={`px-6 py-2 rounded-lg text-white
-        ${form.amount ? "bg-[#1A2B4C]" : "bg-gray-300 cursor-not-allowed"}`}
+       ${
+         form.amount && !valorInvalido
+           ? "bg-[#1A2B4C]"
+           : "bg-gray-300 cursor-not-allowed"
+       }`}
               >
                 Próximo
               </button>

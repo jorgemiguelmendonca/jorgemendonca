@@ -68,6 +68,8 @@ export default function ServicosCTA() {
   };
   const valor = Number(form.valor || 0);
   const meses = Number(form.prazo || 120);
+  const valorMinimo = 30000;
+  const valorInvalido = valor > 0 && valor < valorMinimo;
 
   const jurosMensal = 0.01 / 12;
 
@@ -82,6 +84,10 @@ export default function ServicosCTA() {
 
   const jurosTotal = (Number(totalPago) - valor).toFixed(2);
   const enviarEmail = async () => {
+    if (valor < 30000) {
+      alert("O valor mínimo para solicitação é de 30.000 €.");
+      return;
+    }
     if (!form.nome || !form.email || !form.whatsapp || !form.valor) {
       alert("Preencha todos os campos obrigatórios.");
       return;
@@ -213,8 +219,17 @@ export default function ServicosCTA() {
             placeholder="30.000 €"
             value={form.valor ? Number(form.valor).toLocaleString("pt-PT") : ""}
             onChange={handleChange}
-            className="w-full mb-4 border border-[#1A2B4C] rounded-lg p-3 text-[#1A2B4C]"
+            className={`w-full border rounded-lg p-3 text-[#1A2B4C]
+  ${
+    valorInvalido ? "border-red-500 focus:border-red-500" : "border-[#1A2B4C]"
+  }`}
           />
+
+          {valorInvalido && (
+            <p className="text-red-500 text-sm mt-2">
+              O valor mínimo para solicitação é de 30.000 €.
+            </p>
+          )}
 
           {/* PRAZO */}
           <label className="text-[#1A2B4C]">Prazo de Pagamento</label>
@@ -301,7 +316,13 @@ export default function ServicosCTA() {
           {/* BOTÃO */}
           <button
             onClick={enviarEmail}
-            className="w-full bg-[#1A2B4C] hover:bg-[#16233f] text-white font-semibold py-4 rounded-lg mt-4 transition cursor-pointer"
+            disabled={valorInvalido}
+            className={`w-full font-semibold py-4 rounded-lg mt-4 transition
+${
+  valorInvalido
+    ? "bg-gray-300 cursor-not-allowed"
+    : "bg-[#1A2B4C] hover:bg-[#16233f] text-white cursor-pointer"
+}`}
           >
             Receber Simulação Gratuita
           </button>
