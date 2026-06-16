@@ -18,28 +18,45 @@ export default function NossaHistoria() {
         {/* TEXTO */}
         <div>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
-            Jorge Miguel Mendonça, Unipessoal Lda.
+            Jorge Mendonça
           </h2>
 
           <p className="text-gray-600 mb-6 leading-relaxed">
-            Somos um intermediário de crédito vinculado, devidamente registado
-            no Banco de Portugal sob o n.º 0001707, com sede na Ilha de São
-            Jorge, Açores.
+            Responsável pela EUROBRIDGE – Serviços de Crédito Internacional
+            Ltda. CNPJ:{" "}
+            <strong className="text-[#c5a059] uppercase">
+              65.559.910/0001-88
+            </strong>
           </p>
 
           <p className="text-gray-600 mb-8 leading-relaxed">
-            A nossa missão é proporcionar soluções de crédito personalizadas e
-            transparentes, adaptadas às especificidades do mercado açoriano e às
-            necessidades de cada cliente.
+            A <strong className="text-[#c5a059] uppercase">EUROBRIDGE</strong> –
+            Serviços de Crédito Internacional Ltda. é uma empresa especializada
+            na intermediação e consultoria de crédito internacional, atuando com
+            profissionalismo, transparência e compromisso na procura das
+            melhores soluções financeiras para os seus clientes.
           </p>
 
           <p className="text-gray-600 mb-8 leading-relaxed">
-            Com profundo conhecimento da realidade local e parceria com
-            instituições financeiras de referência, trabalhamos diariamente para
-            encontrar as melhores condições de financiamento para os nossos
-            clientes.
+            Sob a responsabilidade de Jorge Mendonça, a empresa dedica-se ao
+            acompanhamento personalizado de particulares e empresas que procuram
+            alternativas de financiamento, apoiando cada processo com rigor,
+            seriedade e atenção às necessidades específicas de cada cliente.
           </p>
-
+          <p className="text-gray-600 mb-8 leading-relaxed">
+            A nossa missão é facilitar o acesso a soluções de crédito e
+            financiamento, promovendo relações de confiança, clareza na
+            informação e elevado padrão de atendimento, sempre orientados para
+            os interesses dos nossos clientes e parceiros.
+          </p>
+          <p className="text-gray-600 mb-8 leading-relaxed">
+            Com uma abordagem profissional e uma rede de contactos no setor
+            financeiro internacional, a{" "}
+            <strong className="text-[#c5a059] uppercase">EUROBRIDGE</strong>{" "}
+            trabalha diariamente para identificar oportunidades e apresentar
+            soluções adequadas a cada projeto, contribuindo para o crescimento e
+            desenvolvimento dos seus clientes.
+          </p>
           {/* DIFERENCIAIS */}
           <div className="grid grid-cols-2 gap-4">
             <div className="bg-gray-50 p-4 rounded-lg">
@@ -62,9 +79,9 @@ export default function NossaHistoria() {
           </div>
         </div>
       </div>
-      <div className="max-w-6xl m-auto grid md:grid-cols-4 gap-10 text-center mt-20 mb-20">
+      <div className="max-w-6xl m-auto grid md:grid-cols-3 gap-10 text-center mt-20 mb-20">
         {/* ITEM */}
-        <div className=" border p-5 text-left rounded-[20px]">
+        {/*  <div className=" border p-5 text-left rounded-[20px]">
           <div className="flex flex-wrap items-center gap-4 uppercase">
             <div className="w-12 h-12  bg-[#1A2B4C] text-[#C5A059] flex items-center justify-center rounded-lg mb-4">
               <MapPin size={22} />
@@ -78,7 +95,7 @@ export default function NossaHistoria() {
           <p className="text-gray-500 text-sm">
             Sediados em São Jorge, conhecemos profundamente a realidade regional
           </p>
-        </div>
+        </div>*/}
 
         {/* ITEM */}
         <div className="border p-5 text-left rounded-[20px]">

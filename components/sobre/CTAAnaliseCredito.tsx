@@ -10,11 +10,11 @@ export default function CTAAnaliseCredito() {
         </h2>
 
         <p className="text-lg text-gray-700 max-w-3xl mx-auto mb-10">
-          Como intermediário de crédito vinculado e registado no Banco de
-          Portugal, operamos com total conformidade regulamentar. Temos seguro
-          de responsabilidade civil e trabalhamos exclusivamente com mutuantes
-          certificados, garantindo a máxima segurança e proteção aos nossos
-          clientes.
+          Como intermediário responsável por serviços de crédito internacional
+          da EUROBRIDGE, operamos com total conformidade regulamentar. Temos
+          seguro de responsabilidade civil e trabalhamos exclusivamente com
+          mutuantes certificados, garantindo a máxima segurança e proteção aos
+          nossos clientes.
         </p>
 
         <div className="flex flex-col sm:flex-row justify-center gap-4">

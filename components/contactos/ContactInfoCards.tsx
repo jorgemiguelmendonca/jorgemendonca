@@ -71,18 +71,31 @@ overflow-hidden
           {/* INFO LEGAL */}
 
           <div className="bg-[#1A2B4C] text-white p-8 rounded-2xl">
-            <h3 className="text-xl font-semibold mb-4">Informação Legal</h3>
+            <h3 className="text-xl font-semibold mb-4">
+              <strong className="text-[#c5a059]">
+                Informação Institucional
+              </strong>
+            </h3>
 
             <div className="text-sm text-gray-200 space-y-2">
-              <p>Jorge Miguel Mendonça, Unipessoal Lda.</p>
+              <p>EUROBRIDGE</p>
 
-              <p>Intermediário de Crédito Vinculado</p>
+              <p>Serviços de Cŕedito Internacional Ltda.</p>
 
-              <p>Registo Banco de Portugal: 0001707</p>
+              <p>
+                CNPJ:{" "}
+                <strong className="text-[#c5a059] uppercase">
+                  65.559.910/0001-88
+                </strong>
+              </p>
 
-              <p>Mutuantes: Cofidis; Bicredit</p>
-
-              <p>Seguro RC: Hiscox S.A. (Apólice 2522203)</p>
+              <p>
+                {" "}
+                <strong className="text-[#c5a059] uppercase">
+                  Jorge Mendonça
+                </strong>
+                <br /> Responsável e Diretor Executivo
+              </p>
             </div>
           </div>
         </div>

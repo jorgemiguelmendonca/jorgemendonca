@@ -92,7 +92,7 @@ export default function Footer() {
       {/* COPYRIGHT */}
 
       <div className="text-center text-xs text-gray-400 pb-6">
-        © 2026 Jorge Miguel Mendonça — Todos os direitos reservados
+        © 2026 Jorge Mendonça — Todos os direitos reservados
       </div>
     </footer>
   );
