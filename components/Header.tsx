@@ -33,7 +33,9 @@ export default function Header() {
 
             <div className="leading-tight">
               <p className="font-semibold text-[#1A2B4C]">Jorge Mendonça</p>
-              <p className="text-xs text-gray-500">Intermediação de Crédito</p>
+              <p className="text-xs text-gray-500">
+                Crédito pessoal e empresarial
+              </p>
             </div>
           </Link>
 
