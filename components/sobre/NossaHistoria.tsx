@@ -21,20 +21,19 @@ export default function NossaHistoria() {
             Jorge Mendonça
           </h2>
 
-          <p className="text-gray-600 mb-6 leading-relaxed">
+          {/*         <p className="text-gray-600 mb-6 leading-relaxed">
             Responsável pela EUROBRIDGE – Serviços de Crédito Internacional
             Ltda. CNPJ:{" "}
             <strong className="text-[#c5a059] uppercase">
               65.559.910/0001-88
             </strong>
-          </p>
+          </p> */}
 
           <p className="text-gray-600 mb-8 leading-relaxed">
-            A <strong className="text-[#c5a059] uppercase">EUROBRIDGE</strong> –
-            Serviços de Crédito Internacional Ltda. é uma empresa especializada
-            na intermediação e consultoria de crédito internacional, atuando com
-            profissionalismo, transparência e compromisso na procura das
-            melhores soluções financeiras para os seus clientes.
+            Profissional especializado na intermediação e consultoria de crédito
+            pessoal e empresarial, atuando com profissionalismo, transparência e
+            compromisso na procura das melhores soluções financeiras para os
+            seus clientes.
           </p>
 
           <p className="text-gray-600 mb-8 leading-relaxed">
@@ -51,8 +50,8 @@ export default function NossaHistoria() {
           </p>
           <p className="text-gray-600 mb-8 leading-relaxed">
             Com uma abordagem profissional e uma rede de contactos no setor
-            financeiro internacional, a{" "}
-            <strong className="text-[#c5a059] uppercase">EUROBRIDGE</strong>{" "}
+            financeiro internacional,{" "}
+            <strong className="text-[#c5a059] uppercase">Jorge Mendonça</strong>{" "}
             trabalha diariamente para identificar oportunidades e apresentar
             soluções adequadas a cada projeto, contribuindo para o crescimento e
             desenvolvimento dos seus clientes.

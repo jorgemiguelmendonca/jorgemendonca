@@ -78,7 +78,8 @@ overflow-hidden
             </h3>
 
             <div className="text-sm text-gray-200 space-y-2">
-              <p>EUROBRIDGE</p>
+              {/*
+                <p>EUROBRIDGE</p>
 
               <p>Serviços de Cŕedito Internacional Ltda.</p>
 
@@ -88,6 +89,7 @@ overflow-hidden
                   65.559.910/0001-88
                 </strong>
               </p>
+      */}
 
               <p>
                 {" "}
