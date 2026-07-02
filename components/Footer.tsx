@@ -10,6 +10,7 @@ export default function Footer() {
           <h3 className="text-xl font-semibold mb-4 text-[#c5a059] uppercase">
             Jorge Mendonça
           </h3>
+          {/*
           <p>Eurobridge - Serviços de Crédito Internacional Ltda</p>
           <p className="text-sm text-gray-300 leading-relaxed">
             CNPJ:
@@ -18,6 +19,7 @@ export default function Footer() {
             </strong>
             .
           </p>
+       */}
 
           <p className="text-sm text-gray-300 mt-4">
             Responsável especializado em soluções de financiamento para crédito
