@@ -71,45 +71,34 @@ export default function WhyChooseUs() {
         {/* REGULATORY CARD */}
 
         <div className="border border-[#C5A059] rounded-2xl p-8 bg-white mb-20">
-          <div className="flex gap-4 align-baseline">
-            <div className="w-12 h-12 flex items-center justify-center bg-[#c5a059] text-[#1a2b4c] rounded-lg mb-4">
-              <Shield size={22} />
-            </div>
-
-            <div className="flex flex-col gap-0  justify-center ">
-              <h3 className="text-lg font-semibold text-[#1A2B4C]">
-                Intermediário de Crédito Vinculado
-              </h3>
-
-              <p className="text-gray-600 mb-6">
-                Registado no Banco de Portugal sob o n.º{" "}
-                <strong>0001707</strong>
-              </p>
-            </div>
-          </div>
-
           <div className="grid md:grid-cols-2 gap-6 text-sm text-gray-600">
-            <div className="flex gap-4">
+            <div className="flex flex-col gap-4">
               <div className="w-12 h-12 flex items-center justify-center bg-[#c5a059] text-[#1a2b4c] rounded-lg mb-4">
                 <Award size={22} />
               </div>
               <div>
                 <p className="font-medium text-[#1A2B4C]">
-                  Mutuantes com Contrato de Vinculação
+                  Atuamos em parceria estratégica com a Banca Centropadana
+                  Credito Cooperativo e outras instituições financeiras
+                  europeias, disponibilizando soluções de financiamento seguras,
+                  transparentes e adaptadas às necessidades de particulares e
+                  empresas.
                 </p>
                 <p>Cofidis e Bicredit</p>
               </div>
             </div>
 
-            <div className="flex gap-4">
+            <div className="flex flex-col gap-4">
               <div className="w-12 h-12 flex items-center justify-center bg-[#c5a059] text-[#1a2b4c] rounded-lg mb-4">
                 <CheckSquare size={22} />
               </div>
               <div className="">
                 <p className="font-medium text-[#1A2B4C]">
-                  Seguro de Responsabilidade Civil
+                  Parceiro Oficial da Banca Centropadana Credito Cooperativo,
+                  disponibilizando soluções de financiamento europeias para
+                  particulares e empresas, com acompanhamento especializado,
+                  transparência e compromisso em todas as etapas do processo.
                 </p>
-                <p>Hiscox S.A. (Apólice 2522203)</p>
               </div>
             </div>
           </div>
