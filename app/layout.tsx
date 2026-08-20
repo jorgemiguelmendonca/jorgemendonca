@@ -37,7 +37,7 @@ export default function RootLayout({
 
         <meta
           name="description"
-          content="Jorge Miguel Mendonça é Intermediário de Crédito Vinculado registado no Banco de Portugal (n.º 0001707). Soluções de crédito habitação, crédito pessoal e consolidação de créditos na Ilha de São Jorge, Açores."
+          content="Jorge Miguel Mendonça é Intermediário de Crédito Vinculado registado no Banca Centropadana Credito Cooperativo. Soluções de crédito habitação, crédito pessoal e consolidação de créditos na Ilha de São Jorge, Açores."
         />
 
         <meta
